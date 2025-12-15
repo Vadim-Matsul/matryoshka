@@ -1,0 +1,33 @@
+/* === СКРОЛЛБАР ДЛЯ ВСЕГО САЙТА === */
+
+:root {
+  --scrollbar-bg: var(--color-custom-grey-100, #cedae2);
+  --scrollbar-thumb: var(--color-custom-brand-100, #006b5b);
+  --scrollbar-thumb-hover: var(--color-custom-brand-200, #004539);
+  --scrollbar-thumb-active: var(--color-custom-brand-000, #4d7277);
+  --scrollbar-corner: var(--color-custom-grey-200, #bdc6c8);
+}
+
+/* Для Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 2px;
+  background: var(--scrollbar-bg);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 8px;
+
+  &:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  &:active {
+    background: var(--scrollbar-thumb-active);
+  }
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-corner);
+}

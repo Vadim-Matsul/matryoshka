@@ -1,0 +1,47 @@
+@import url('./variables.css');
+@import url('./normalize.css');
+@import url('./scroll.css');
+@import url('./container.css');
+@import 'tailwindcss';
+
+@theme {
+  --font-jost: var(--font-jost);
+
+  --color-custom-white-100: #e6d3bf;
+  --color-custom-white-101: #fdefdf;
+  --color-custom-white-102: #c8c8c8;
+  --color-custom-white-200: #ebebeb;
+  --color-custom-white-300: #707579;
+  --color-custom-white-400: #bfad9a;
+  --color-custom-white-500: #b8a997;
+
+  --color-custom-black-100: #000000;
+  --color-custom-black-400: #212121;
+  --color-custom-black-600: #151515;
+  --color-custom-grey-100: #636b6e;
+  --color-custom-grey-200: #333636;
+  --color-custom-orange-200: #ffca91;
+  --color-custom-orange-300: #e7b37c;
+  --color-custom-orange-400: #ffb35c;
+
+  --color-custom-stone-500: #a88259;
+  --color-custom-red-100: #e53935;
+
+  --breakpoint-1_5lg: 73.75rem; /* 1180px */
+  --breakpoint-1_5xl: 90rem; /* 1440px */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #004539;
+  color: #edf1f6; /* цвет текста при выделении */
+}
+
+::-moz-selection {
+  /* для Firefox */
+  background: #004539;
+  color: #edf1f6;
+}

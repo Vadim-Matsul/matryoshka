@@ -1,0 +1,72 @@
+import { BookPlaceRequestModel } from '@/api/BronePlacePOST';
+import { NextResponse } from 'next/server';
+
+const getCurDate = () => {
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // месяцы с 0
+  const day = String(now.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
+  return formattedDate;
+};
+
+// TODO: правильно передавать данные в CRM
+const config = {
+  api_url: 'https://app.remarked.ru/api/v1/ApiReservesWidget',
+  domain: 'https://rassvet.dymzavod.ru',
+  tokens: {
+    red_october: '6fa131296c485a5f478e7e197232972c',
+    sochi: '',
+  },
+  envs: {},
+};
+
+export async function POST(req: Request) {
+  const date = getCurDate();
+
+  try {
+    const { name, phone, agree, place }: BookPlaceRequestModel = await req.json();
+
+    // генерация request_id и session_id
+    const request_id = Date.now();
+    const session_id = `session_${Date.now()}_${Math.random()}`;
+
+    const token = config.tokens.red_october;
+
+    const body = {
+      method: 'CreateReserve',
+      token: token,
+      reserve: {
+        name,
+        phone,
+        date, // TODO: plug
+        time: '18:18', // TODO: plug
+        guests_count: '1000', // TODO: plug
+        comment: '',
+        utm: '',
+        duration: '120',
+      },
+      request_id,
+      session_id,
+      site_url: config.domain,
+    };
+
+    const response = await fetch(config.api_url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    const data = await response.json();
+    if (data.status === 'error') {
+      throw new Error(data.message);
+    }
+
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error('Reserve API error:', date, error);
+    return NextResponse.json({ error: 'Something went wrong' + error }, { status: 500 });
+  }
+}

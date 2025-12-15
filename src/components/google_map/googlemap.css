@@ -1,0 +1,10 @@
+.gmnoprint.gm-style-mtc-bbw,
+.gm-control-active.gm-fullscreen-control,
+.gmnoprint {
+  display: none;
+}
+
+div:has(> a[title='Открыть эту область в Google Картах (в новом окне)']) {
+  display: none;
+  opacity: 0;
+}

@@ -1,0 +1,29 @@
+@keyframes star_movement_bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star_movement_top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+.star_movement_bottom {
+  animation: star_movement_bottom linear infinite alternate;
+}
+
+.star_movement_top {
+  animation: star_movement_top linear infinite alternate;
+}
