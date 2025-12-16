@@ -12,7 +12,6 @@ const getCurDate = () => {
   return formattedDate;
 };
 
-// TODO: правильно передавать данные в CRM
 const config = {
   api_url: 'https://app.remarked.ru/api/v1/ApiReservesWidget',
   domain: 'https://matreshka-karaoke.ru',
@@ -42,11 +41,11 @@ export async function POST(req: Request) {
         name,
         phone,
         date, // TODO: plug
-        time: '18:18', // TODO: plug
-        guests_count: '1000', // TODO: plug
+        time: 1098, // TODO: plug
+        guests_count: 1000, // TODO: plug
         comment: '',
         utm: '',
-        duration: '120',
+        duration: 120,
       },
       request_id,
       session_id,
