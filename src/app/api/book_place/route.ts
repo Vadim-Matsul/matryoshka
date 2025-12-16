@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       reserve: {
         name,
         phone,
-        date: date, // TODO: plug
+        // date: date, // TODO: plug
         time: 1098, // TODO: plug
         guests_count: 1000, // TODO: plug
         comment: '',
