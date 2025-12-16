@@ -4,9 +4,11 @@ import { NextResponse } from 'next/server';
 const getCurDate = () => {
   const now = new Date();
 
-  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
 
-  return Math.floor(startOfDay.getTime() / 1000);
+  return `${day}.${month}.${year}`;
 };
 
 const config = {
@@ -36,11 +38,12 @@ export async function POST(req: Request) {
       method: 'CreateReserve',
       token: token,
       reserve: {
+        place_id: 1,
         name,
         phone,
-        date, // TODO: plug
-        time: 1098, // TODO: plug
-        guests_count: 1000, // TODO: plug
+        date,
+        time: '18:18', // TODO: plug
+        guests_count: '100', // TODO: plug
         comment: '',
         utm: '',
         duration: 120,
