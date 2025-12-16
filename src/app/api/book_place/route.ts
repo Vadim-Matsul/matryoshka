@@ -15,9 +15,9 @@ const getCurDate = () => {
 // TODO: правильно передавать данные в CRM
 const config = {
   api_url: 'https://app.remarked.ru/api/v1/ApiReservesWidget',
-  domain: 'https://rassvet.dymzavod.ru',
+  domain: 'https://matreshka-karaoke.ru',
   tokens: {
-    red_october: '6fa131296c485a5f478e7e197232972c',
+    red_october: '8ceab82028b4c1e7edb37efebb35a2dd',
     sochi: '',
   },
   envs: {},
