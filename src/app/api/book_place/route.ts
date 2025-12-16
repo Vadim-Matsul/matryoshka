@@ -11,7 +11,7 @@ const getCurDate = () => {
   return `${year}-${month}-${day}`;
 };
 
-export const getNextTimeSlotMSK = (stepMinutes = 30): string => {
+const getNextTimeSlotMSK = (stepMinutes = 30): string => {
   const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
 
   const minutes = now.getMinutes();
