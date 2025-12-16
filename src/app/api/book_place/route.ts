@@ -4,11 +4,9 @@ import { NextResponse } from 'next/server';
 const getCurDate = () => {
   const now = new Date();
 
-  const day = String(now.getDate()).padStart(2, '0');
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const year = now.getFullYear();
+  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
 
-  return `${day}.${month}.${year}`;
+  return Math.floor(startOfDay.getTime() / 1000);
 };
 
 const config = {
@@ -22,8 +20,7 @@ const config = {
 };
 
 export async function POST(req: Request) {
-  // const date = getCurDate();
-  const date = new Date().getMilliseconds();
+  const date = getCurDate();
   console.log(date);
 
   try {
@@ -41,7 +38,7 @@ export async function POST(req: Request) {
       reserve: {
         name,
         phone,
-        // date: date, // TODO: plug
+        date, // TODO: plug
         time: 1098, // TODO: plug
         guests_count: 1000, // TODO: plug
         comment: '',
