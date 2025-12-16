@@ -8,16 +8,34 @@ const getCurDate = () => {
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const day = String(now.getDate()).padStart(2, '0');
 
-  return `${year}-${month}-${day}`; // ISO <date>
+  return `${year}-${month}-${day}`;
+};
+
+export const getNextTimeSlotMSK = (stepMinutes = 30): string => {
+  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+
+  const minutes = now.getMinutes();
+  const remainder = minutes % stepMinutes;
+
+  if (remainder !== 0) {
+    now.setMinutes(minutes + (stepMinutes - remainder));
+  } else {
+    now.setMinutes(minutes + stepMinutes);
+  }
+
+  now.setSeconds(0);
+  now.setMilliseconds(0);
+
+  const hh = String(now.getHours()).padStart(2, '0');
+  const mm = String(now.getMinutes()).padStart(2, '0');
+
+  return `${hh}:${mm}`;
 };
 
 const config = {
   api_url: 'https://app.remarked.ru/api/v1/ApiReservesWidget',
+  token: '8ceab82028b4c1e7edb37efebb35a2dd',
   domain: 'https://matreshka-karaoke.ru',
-  tokens: {
-    red_october: '8ceab82028b4c1e7edb37efebb35a2dd',
-    sochi: '',
-  },
   envs: {},
 };
 
@@ -26,33 +44,23 @@ export async function POST(req: Request) {
   console.log(date);
 
   try {
-    const { name, phone, agree, place }: BookPlaceRequestModel = await req.json();
+    const { name, phone }: BookPlaceRequestModel = await req.json();
 
-    // генерация request_id и session_id
     const request_id = Date.now();
-    const session_id = `session_${Date.now()}_${Math.random()}`;
-
-    const token = config.tokens.red_october;
 
     const body = {
       method: 'CreateReserve',
-      token: token,
+      token: config.token,
       reserve: {
         name,
         phone,
-        date: getCurDate(), // "2025-12-16"
-        time: '18:18:00', // string <time>
-        guests_count: 4, // integer
-        comment: '',
-        utm: '',
-        duration: 120,
-        source: 'site',
-        type: 'booking',
+        date: getCurDate(),
+        time: getNextTimeSlotMSK(),
+        guests_count: 100,
       },
       request_id,
-      session_id,
-      site_url: config.domain,
     };
+    console.log(body)
 
     const response = await fetch(config.api_url, {
       method: 'POST',
