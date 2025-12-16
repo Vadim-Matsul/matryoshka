@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: '«Матрёшка» в центре Москвы — это ночи без пауз, профессиональный звук, яркая атмосфера и лучшие хиты. Место, где голос становится главным героем, а вечер — незабываемым.'
 };
 
+const GOOGLE_API_KEY = "AIzaSyDoXDf6jB5l9l-YLGXkFckmVR5i3LPbP7s";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,6 +35,11 @@ export default function RootLayout({
     <html lang="en" >
       <head>
         <YandexAnal />
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`}
+          type='text/javascript'
+          strategy="afterInteractive"
+        />
       </head>
       <body
         suppressHydrationWarning

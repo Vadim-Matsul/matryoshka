@@ -164,7 +164,6 @@ export function GoogleMap({
   const mapRef = useRef<any | null>(null);
 
 
-
   function smoothZoom(map: any, target: number, step = 1) {
     const currentZoom = map.getZoom() ?? 0;
     if (currentZoom === target) return;

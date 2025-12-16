@@ -1,13 +1,8 @@
 'use client';
 
-import { AnimatedImage } from '@/bits/AnimatedImage';
 import { StarBorder } from '@/bits/animations/StarBorder/StarBorder';
-import { BlurText } from '@/bits/BlurText';
-import { FadeContent } from '@/bits/FadeContent';
-import { SplitText } from '@/bits/SplitText';
-import { LiquidGlass } from '@/ui/LiquidGlass';
+import { BLOCKS_IDS_ENUM } from '@/components/header';
 import { cn } from '@/utils/cn';
-import { useState } from 'react';
 
 const config = {
   description: `Ваш праздник, ваши правила. Арендуйте локации Дымзавода для проведения мероприятий любого масштаба — от камерных встреч до торжественных приёмов. Мы позаботимся обо всём, что нужно для безупречного события`,
@@ -17,7 +12,24 @@ type Props = {}
 
 export function EventSpace({ }: Props) {
 
-  const scrollToBrone = () => { }
+  function scrollToBrone() {
+    function scroll() {
+      const el = document.getElementById(BLOCKS_IDS_ENUM.BRONE);
+      if (!el) return;
+
+
+      const headerOffset = 70;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+
+    scroll()
+  }
 
   return (
     <section
