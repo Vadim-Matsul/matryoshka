@@ -42,7 +42,7 @@ export async function POST(req: Request) {
         name,
         phone,
         date,
-        time: '18:18', // TODO: plug
+        time: 1098, // TODO: plug
         guests_count: '100', // TODO: plug
         comment: '',
         utm: '',
