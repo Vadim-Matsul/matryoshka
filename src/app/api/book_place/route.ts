@@ -4,12 +4,11 @@ import { NextResponse } from 'next/server';
 const getCurDate = () => {
   const now = new Date();
 
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0'); // месяцы с 0
   const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
 
-  const formattedDate = `${year}-${month}-${day}`;
-  return formattedDate;
+  return `${day}.${month}.${year}`;
 };
 
 const config = {
