@@ -22,7 +22,9 @@ const config = {
 };
 
 export async function POST(req: Request) {
-  const date = getCurDate();
+  // const date = getCurDate();
+  const date = new Date().getMilliseconds();
+  console.log(date);
 
   try {
     const { name, phone, agree, place }: BookPlaceRequestModel = await req.json();
@@ -39,7 +41,7 @@ export async function POST(req: Request) {
       reserve: {
         name,
         phone,
-        date, // TODO: plug
+        date: date, // TODO: plug
         time: 1098, // TODO: plug
         guests_count: 1000, // TODO: plug
         comment: '',
