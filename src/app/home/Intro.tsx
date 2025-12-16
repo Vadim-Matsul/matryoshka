@@ -18,7 +18,7 @@ export function Intro({ }: Props) {
       <section
         className={cn(
           'relative',
-          'sm:h-[850px] md:h-[1150px] 1_5xl:h-[1345px]',
+          'h-[850px] md:h-[1150px] 1_5lg:h-[1345px]',
           'w-full',
         )}
       >
@@ -32,7 +32,7 @@ export function Intro({ }: Props) {
           <section
             className={cn(
               'flex items-center justify-between',
-              'pb-[30px] px-[16px] md:pb-[80px] md:px-[50px]',
+              'pb-[30px] px-[16px] md:pb-[80px] md:px-[80px]',
               'uppercase',
               cn(
                 'text-[18px] leading-[20px] tracking-[3px] uppercase font-medium'
@@ -40,7 +40,7 @@ export function Intro({ }: Props) {
             )}
           >
             <p>MOSCOW</p>
-            <p>караоке бар</p>
+            <p className='text-center'>караоке бар</p>
             <p>{new Date().getFullYear()}</p>
           </section>
 
@@ -110,7 +110,7 @@ export function Intro({ }: Props) {
                 blur: 20,
                 scale: 1.3,
                 delay: 0,
-                duration: 2.5,
+                duration: 1.5,
               }}
               className={cn(
                 'w-full h-full object-cover relative z-[1] select-none',

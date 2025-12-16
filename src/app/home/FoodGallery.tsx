@@ -103,94 +103,12 @@ export function FoodGallery() {
               />
             </p>
 
-            <AnimatedList
+            <div
               className={cn(
-                'flex flex-col gap-6 mt-[50px]',
+                'mt-[50px]',
                 'w-min mx-auto'
               )}
-              stagger={0.3}
-              delay={0.5}
             >
-              <div
-                className={cn(
-                  'rounded-[30px] overflow-hidden ',
-                  'hover:scale-[.95] focus:scale-[.95] transition-all',
-                  'w-[170px]'
-                )}
-              >
-                <StarBorder
-                  as="button"
-                  onClick={openBar}
-                  speed="3s"
-                  thickness={1.5}
-                  className={cn(
-                    'cursor-pointer pb-0.5'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'bg-[linear-gradient(45deg,#B30122_0%,#ffffff40_60%,#B30122_100%)] ',
-                      'relative inline-flex rounded-[30px] p-[1px]',
-                      'shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-1px_0_rgba(0,0,0,0.30)]',
-                      'w-full',
-                      cn(
-                        'h-[40px]',
-                      )
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center'
-                      )}
-                    >
-                      <p>
-                        Барное меню
-                      </p>
-                    </div>
-                  </div>
-                </StarBorder>
-              </div>
-              <div
-                className={cn(
-                  'rounded-[30px] overflow-hidden ',
-                  'hover:scale-[.95] focus:scale-[.95] transition-all',
-                  'w-[170px]'
-                )}
-              >
-                <StarBorder
-                  as="button"
-                  onClick={openDym}
-                  speed="3s"
-                  thickness={1.5}
-                  className={cn(
-                    'cursor-pointer pb-0.5'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'bg-[linear-gradient(45deg,#B30122_0%,#ffffff40_60%,#B30122_100%)] ',
-                      'relative inline-flex rounded-[30px] p-[1px]',
-                      'shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-1px_0_rgba(0,0,0,0.30)]',
-                      'w-full',
-                      cn(
-                        'h-[40px]',
-                      )
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center'
-                      )}
-                    >
-                      <p>
-                        Дымницы
-                      </p>
-                    </div>
-                  </div>
-                </StarBorder>
-              </div>
               <div
                 className={cn(
                   'rounded-[30px] overflow-hidden ',
@@ -224,14 +142,14 @@ export function FoodGallery() {
                         'flex items-center justify-center'
                       )}
                     >
-                      <p>
-                        Основное меню
+                      <p className='tracking-[2px] font-semibold'>
+                        МЕНЮ
                       </p>
                     </div>
                   </div>
                 </StarBorder>
               </div>
-            </AnimatedList>
+            </div>
           </div>
         </section>
         <section
@@ -272,54 +190,11 @@ export function FoodGallery() {
             </div>
 
 
-            <AnimatedList
+            <div
               className={cn(
-                'flex flex-row gap-[60px] justify-center',
-
+                'flex justify-center',
               )}
-              stagger={0.3}
-              delay={0.5}
             >
-              <div
-                className={cn(
-                  'rounded-[30px] overflow-hidden ',
-                  'hover:scale-[.95] focus:scale-[.95] transition-all',
-                  'w-[170px]'
-                )}
-              >
-                <StarBorder
-                  as="button"
-                  onClick={openBar}
-                  speed="3s"
-                  thickness={1.5}
-                  className={cn(
-                    'cursor-pointer pb-0.5'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'bg-[linear-gradient(45deg,#B30122_0%,#ffffff40_60%,#B30122_100%)] ',
-                      'relative inline-flex rounded-[30px] p-[1px]',
-                      'shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-1px_0_rgba(0,0,0,0.30)]',
-                      'w-full',
-                      cn(
-                        'h-[48px]',
-                      )
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center'
-                      )}
-                    >
-                      <p>
-                        Барное меню
-                      </p>
-                    </div>
-                  </div>
-                </StarBorder>
-              </div>
               <div
                 className={cn(
                   'rounded-[30px] overflow-hidden ',
@@ -349,58 +224,19 @@ export function FoodGallery() {
                   >
                     <div
                       className={cn(
+                        'tracking-[2px] font-semibold',
                         'w-full h-full rounded-[30px] bg-custom-black-100',
                         'flex items-center justify-center'
                       )}
                     >
                       <p>
-                        Основное меню
+                        МЕНЮ
                       </p>
                     </div>
                   </div>
                 </StarBorder>
               </div>
-              <div
-                className={cn(
-                  'rounded-[30px] overflow-hidden ',
-                  'hover:scale-[.95] focus:scale-[.95] transition-all',
-                  'w-[170px]'
-                )}
-              >
-                <StarBorder
-                  as="button"
-                  onClick={openDym}
-                  speed="3s"
-                  thickness={1.5}
-                  className={cn(
-                    'cursor-pointer pb-0.5'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'bg-[linear-gradient(45deg,#B30122_0%,#ffffff40_60%,#B30122_100%)] ',
-                      'relative inline-flex rounded-[30px] p-[1px]',
-                      'shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-1px_0_rgba(0,0,0,0.30)]',
-                      'w-full',
-                      cn(
-                        'h-[48px]',
-                      )
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center'
-                      )}
-                    >
-                      <p>
-                        Дымницы
-                      </p>
-                    </div>
-                  </div>
-                </StarBorder>
-              </div>
-            </AnimatedList>
+            </div>
           </div>
 
           <div

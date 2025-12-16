@@ -34,8 +34,8 @@ export function Places({ }: Props) {
       <div
         className={cn(
           'py-[40px] px-[20px] flex flex-col text-custom-white-101',
-          'sm:py-[80px] xl:pl-[40px] 1_5xl:ml-[80px] 1_5xl:pl-0',
-          'lg:w-[540px] xl:w-[560px] lg:h-min lg:self-center'
+          'sm:py-[80px] lg:pl-[80px]',
+          'lg:w-[540px] 1_5lg:w-[600px] lg:h-min lg:self-center'
         )}
       >
         <h2
@@ -143,7 +143,7 @@ export function Places({ }: Props) {
               blur: 20,
               scale: 1.3,
               delay: 0,
-              duration: 2.5,
+              duration: 1.5,
             }}
             className={cn(
               'w-full h-full object-cover relative z-[1] select-none',

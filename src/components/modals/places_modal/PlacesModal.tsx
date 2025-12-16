@@ -31,8 +31,6 @@ export function PlacesModal({
   const [activeMousePlaceKey, setActiveMousePlaceKey] = useState<null | RestaurantPlaceKeys>(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState<null | RestaurantPlaceKeys>(RestaurantPlaceKeys.RedOctober);
 
-  console.log(nextStep)
-
   function reset() {
     setActiveMousePlaceKey(null)
     setSelectedRestaurant(null)
@@ -172,52 +170,6 @@ export function PlacesModal({
                 {nextStep === PlacesModalNextSteps.MAIN_MENU && (
                   <ImagesGallery
                     images={brone_table_config[PlacesModalNextSteps.MAIN_MENU].images}
-                    classNames={{
-                      wrapperClassName: cn(
-                        // 'bg-red-500',
-                        'max-w-screen max-h-screen',
-                        'w-full h-full'
-                      ),
-                      swiperClassName: cn(
-                        // 'bg-blue-500',
-                        'w-full h-full'
-                      ),
-                      slideClassName: cn(
-                        // 'bg-green-500',
-                        'max-w-full max-h-full mx-auto',
-                        'lg:max-h-[590px]',
-                        'xl:max-h-[600px]',
-                      )
-                    }}
-                  />
-                )}
-
-                {nextStep === PlacesModalNextSteps.BAR_MENU && (
-                  <ImagesGallery
-                    images={brone_table_config[PlacesModalNextSteps.BAR_MENU].images}
-                    classNames={{
-                      wrapperClassName: cn(
-                        // 'bg-red-500',
-                        'max-w-screen max-h-screen',
-                        'w-full h-full'
-                      ),
-                      swiperClassName: cn(
-                        // 'bg-blue-500',
-                        'w-full h-full'
-                      ),
-                      slideClassName: cn(
-                        // 'bg-green-500',
-                        'max-w-full max-h-full mx-auto',
-                        'lg:max-h-[590px]',
-                        'xl:max-h-[600px]',
-                      )
-                    }}
-                  />
-                )}
-
-                {nextStep === PlacesModalNextSteps.DYM && (
-                  <ImagesGallery
-                    images={brone_table_config[PlacesModalNextSteps.DYM].images}
                     classNames={{
                       wrapperClassName: cn(
                         // 'bg-red-500',

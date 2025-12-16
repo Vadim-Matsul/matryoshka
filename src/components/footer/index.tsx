@@ -50,7 +50,6 @@ export function Footer({ }: Props) {
         'flex',
         'px-[20px] pt-[30px] pb-[50px] lg:p-0',
         '1_5xl:max-w-[1440px] 1_5xl:mx-auto'
-
       )}
     >
       <div
@@ -58,7 +57,6 @@ export function Footer({ }: Props) {
           'max-w-[300px] mx-auto w-full lg:hidden'
         )}
       >
-
         <div className='flex flex-col gap-4'>
           <a
             href={matryoshka.instagram.href}
@@ -196,7 +194,7 @@ export function Footer({ }: Props) {
             'flex justify-between'
           )}
         >
-          <div>
+          <div className='flex flex-col justify-between'>
             <div className='flex flex-col gap-2 '>
               <a
                 href={matryoshka.adress.href}
@@ -259,7 +257,7 @@ export function Footer({ }: Props) {
             </div>
           </div>
 
-          <div>
+          <div className='flex flex-col justify-between'>
             <div className='flex flex-col items-center gap-4'>
               <a
                 href={matryoshka.instagram.href}
@@ -317,7 +315,7 @@ export function Footer({ }: Props) {
             </ul>
           </div>
 
-          <div className='w-min flex'>
+          <div className='flex flex-col justify-between'>
             <div className='flex grow flex-col justify-between items-end text-right'>
               <p className='text-[12px] leading-[15px] font-medium w-[200px] tracking[1px] text-custom-white-500'>
                 *Meta признана экстремистcкой организацией в России
@@ -388,7 +386,7 @@ export function Footer({ }: Props) {
             className='h-px border border-white border-dashed'
           />
         </div>
-      </div >
+      </div>
     </footer >
   )
 }

@@ -31,7 +31,7 @@ export function SpecialForGuests({ }: Props) {
             blur: 20,
             scale: 1,
             delay: 0,
-            duration: 3,
+            duration: 1.5,
           }}
           className={cn(
             'w-full h-full object-cover relative z-[1]',

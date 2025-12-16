@@ -9,27 +9,13 @@ export enum PlacesModalNextSteps {
 export const brone_table_config = {
   [PlacesModalNextSteps.MAIN_MENU]: {
     images: [
-      '/images/menus/main_menu/red_october/1.webp',
-      '/images/menus/main_menu/red_october/2.webp',
-      '/images/menus/main_menu/red_october/3.webp',
-      '/images/menus/main_menu/red_october/4.webp',
-      '/images/menus/main_menu/red_october/5.webp',
+      '/images/menu/menu_1.webp',
+      '/images/menu/menu_2.webp',
+      '/images/menu/menu_3.webp',
+      '/images/menu/menu_4.webp',
+      '/images/menu/menu_5.webp',
+      '/images/menu/menu_6.webp',
+      '/images/menu/menu_7.webp',
     ],
-  },
-  [PlacesModalNextSteps.BAR_MENU]: {
-    images: [
-      '/images/menus/bar_menu/red_october/1.webp',
-      '/images/menus/bar_menu/red_october/2.webp',
-      '/images/menus/bar_menu/red_october/3.webp',
-      '/images/menus/bar_menu/red_october/4.webp',
-      '/images/menus/bar_menu/red_october/5.webp',
-      '/images/menus/bar_menu/red_october/6.webp',
-      '/images/menus/bar_menu/red_october/7.webp',
-      '/images/menus/bar_menu/red_october/8.webp',
-      '/images/menus/bar_menu/red_october/9.webp',
-    ],
-  },
-  [PlacesModalNextSteps.DYM]: {
-    images: ['/images/menus/special/khamovniki/1.webp'],
   },
 };
