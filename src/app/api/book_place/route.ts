@@ -41,7 +41,7 @@ export async function POST(req: Request) {
         name,
         phone,
         date: getCurDate(), // "2025-12-16"
-        time: '18:18', // string <time>
+        time: '18:18:00', // string <time>
         guests_count: 4, // integer
         comment: '',
         utm: '',
