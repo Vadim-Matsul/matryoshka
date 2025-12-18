@@ -100,20 +100,20 @@ export function EventSpace({ }: Props) {
           'absolute left-0 top-0 right-0 h-[630px] md:h-[1100px] z-[1]'
         )}
       >
-        <video
-          src='/videos/girl.mp4'
-          autoPlay
-          loop
-          muted
-          className='hidden md:block w-full h-full object-cover'
+        <img
+          loading='lazy'
+          decoding='async'
+          src='/images/girl_desktop.webp'
+          alt='Девушка поёт в микрофон'
+          className='hidden lg:block w-full h-full object-cover select-none'
         />
 
         <img
           loading='lazy'
           decoding='async'
-          src='/images/girl.webp'
+          src='/images/girl_mobile.webp'
           alt='Девушка поёт в микрофон'
-          className='md:hidden w-full h-full object-cover select-none'
+          className='lg:hidden w-full h-full object-cover select-none'
         />
 
 
