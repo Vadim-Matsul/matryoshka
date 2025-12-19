@@ -30,7 +30,7 @@
     "lottie-react": "^2.4.1",
     "mitt": "^3.0.1",
     "motion": "^12.23.3",
-    "next": "15.3.5",
+    "next": "15.5.7",
     "node-fetch": "^3.3.2",
     "normalize.css": "^8.0.1",
     "ogl": "^1.0.11",
