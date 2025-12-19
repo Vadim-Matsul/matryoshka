@@ -49,7 +49,7 @@ export function Places({ }: Props) {
         </h2>
 
         <a
-          href={matryoshka.adress.name}
+          href={matryoshka.adress.href}
           target='_blank'
           className={cn(
             'font-medium tracking-[3px] uppercase',
