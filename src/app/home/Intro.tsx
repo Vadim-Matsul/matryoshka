@@ -18,7 +18,7 @@ export function Intro({ }: Props) {
       <section
         className={cn(
           'relative',
-          'h-[850px] md:h-[1150px] 1_5lg:h-[1345px]',
+          'h-[700px] sm:h-[850px] md:h-[1150px] 1_5lg:h-[1345px]',
           'w-full',
         )}
       >
@@ -35,12 +35,14 @@ export function Intro({ }: Props) {
               'pb-[30px] px-[16px] md:pb-[80px] md:px-[80px]',
               'uppercase',
               cn(
-                'text-[18px] leading-[20px] tracking-[3px] uppercase font-medium'
+                'uppercase font-medium',
+                'text-[8px] leading-[10px] tracking-[2px]',
+                'sm:text-[18px] sm:leading-[20px] sm:tracking-[3px] '
               )
             )}
           >
             <p>MOSCOW</p>
-            <p className='text-center'>караоке бар</p>
+            <p className='text-center'>караоке-бар</p>
             <p>{new Date().getFullYear()}</p>
           </section>
 

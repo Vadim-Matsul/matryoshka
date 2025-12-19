@@ -8,6 +8,7 @@ import { InstagramIcon } from '../icons/InstagramIcon';
 import { matryoshka } from '@/configs/matryoshka';
 import { TelegramIcon } from '../icons/TelegramIcon';
 import { LogoIcon } from '../icons/LogoIcon';
+import { getMoscowDay } from '@/app/home/PlacesMap';
 
 
 type Props = {}
@@ -42,7 +43,7 @@ const weekMap = [
 
 export function Footer({ }: Props) {
   const pathname = usePathname();
-
+  const moscowDay = getMoscowDay()
 
   return (
     <footer
@@ -126,15 +127,30 @@ export function Footer({ }: Props) {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <p className='flex items-center gap-3'>
+            <p
+              className={cn(
+                'flex items-center gap-3',
+                moscowDay === 'thursday' ? 'font-bold uppercase' : ''
+              )}
+            >
               <span className='inline-block w-3.5'>чт</span>
               <span>20:00-03:00</span>
             </p>
-            <p className='flex items-center gap-3'>
+            <p
+              className={cn(
+                'flex items-center gap-3',
+                moscowDay === 'friday' ? 'font-bold uppercase' : ''
+              )}
+            >
               <span className='inline-block w-3.5'>пт</span>
               <span>20:00-05:00</span>
             </p>
-            <p className='flex items-center gap-3'>
+            <p
+              className={cn(
+                'flex items-center gap-3',
+                moscowDay === 'saturday' ? 'font-bold uppercase' : ''
+              )}
+            >
               <span className='inline-block w-3.5'>сб</span>
               <span>20:00-05:00</span>
             </p>
@@ -149,8 +165,8 @@ export function Footer({ }: Props) {
           *Meta признана экстремистcкой организацией в России
         </p>
 
-        <p className='text-[12px] leading-[15px] font-medium uppercase tracking[1px] text-custom-grey-100 mt-5'>
-          18+ ПОЖАЛУЙСТА, ВОЗЬМИТЕ С СОБОЙ ОРИГИНАЛЫ ДОКУМЕНТОВ, ПОДТВЕРЖДАЮЩИХ ВОЗРАСТ
+        <p className='text-[12px] uppercase leading-[15px] font-medium uppercase tracking[1px] text-custom-grey-100 mt-5'>
+          18+ Просим иметь при себе оригиналы документов, подтверждающих возраст
         </p>
 
         <ul className='flex flex-col gap-2.5 mt-[30px]'>
@@ -238,15 +254,30 @@ export function Footer({ }: Props) {
                 <span className='inline-block w-3.5'>ср</span>
                 <span>Закрыто</span>
               </p>
-              <p className='flex items-center gap-3'>
+              <p
+                className={cn(
+                  'flex items-center gap-3',
+                  moscowDay === 'thursday' ? 'font-bold uppercase' : ''
+                )}
+              >
                 <span className='inline-block w-3.5'>чт</span>
                 <span>20:00-03:00</span>
               </p>
-              <p className='flex items-center gap-3'>
+              <p
+                className={cn(
+                  'flex items-center gap-3',
+                  moscowDay === 'friday' ? 'font-bold uppercase' : ''
+                )}
+              >
                 <span className='inline-block w-3.5'>пт</span>
                 <span>20:00-05:00</span>
               </p>
-              <p className='flex items-center gap-3'>
+              <p
+                className={cn(
+                  'flex items-center gap-3',
+                  moscowDay === 'saturday' ? 'font-bold uppercase' : ''
+                )}
+              >
                 <span className='inline-block w-3.5'>сб</span>
                 <span>20:00-05:00</span>
               </p>
@@ -321,8 +352,8 @@ export function Footer({ }: Props) {
                 *Meta признана экстремистcкой организацией в России
               </p>
 
-              <p className='text-[12px] leading-[15px] font-medium w-[260px] uppercase tracking[1px] text-custom-white-500 mt-5'>
-                18+ ПОЖАЛУЙСТА, ВОЗЬМИТЕ С СОБОЙ ОРИГИНАЛЫ ДОКУМЕНТОВ, ПОДТВЕРЖДАЮЩИХ ВОЗРАСТ
+              <p className='text-[12px] uppercase leading-[15px] font-medium w-[270px] uppercase tracking[1px] text-custom-white-500 mt-5'>
+                18+ Просим иметь при себе оригиналы документов, подтверждающих возраст
               </p>
             </div>
           </div>

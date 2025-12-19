@@ -35,6 +35,21 @@ body {
   overflow-x: hidden;
 }
 
+.bg-video {
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+
+  background: black;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
 ::selection {
   background: #004539;
   color: #edf1f6; /* цвет текста при выделении */

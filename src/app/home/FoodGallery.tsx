@@ -40,7 +40,7 @@ export function FoodGallery() {
         >
           <div
             className={cn(
-              'h-[630px] w-full bg-red-500',
+              'h-[630px] w-full',
               'relative'
             )}
           >
@@ -49,7 +49,8 @@ export function FoodGallery() {
               autoPlay
               loop
               muted
-              className='w-full h-full object-cover relative z-[2]'
+              controls={false}
+              className='w-full bg-video h-full object-cover relative z-[2]'
             />
 
             <div
@@ -81,7 +82,7 @@ export function FoodGallery() {
               )}
             >
               <BlurText
-                text={'Галерея блюд'}
+                text={'Галерея яств'}
                 delay={400}
                 animateBy="words"
                 direction="bottom"
@@ -95,7 +96,7 @@ export function FoodGallery() {
               )}
             >
               <BlurText
-                text={'Авторской кухни'}
+                text={'Авторская кухня'}
                 delay={400}
                 animateBy="words"
                 direction="bottom"
@@ -113,7 +114,7 @@ export function FoodGallery() {
                 className={cn(
                   'rounded-[30px] overflow-hidden ',
                   'hover:scale-[.95] focus:scale-[.95] transition-all',
-                  'w-[170px]'
+                  'w-[240px]'
                 )}
               >
                 <StarBorder
@@ -132,18 +133,19 @@ export function FoodGallery() {
                       'shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-1px_0_rgba(0,0,0,0.30)]',
                       'w-full',
                       cn(
-                        'h-[40px]',
+                        'h-[42px]',
                       )
                     )}
                   >
                     <div
                       className={cn(
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center'
+                        'w-full h-full rounded-[30px] bg-custom-black-100 uppercase',
+                        'flex items-center justify-center text-custom-white-102/90',
+                        'text-[14px] tracking-[1px] font-semibold'
                       )}
                     >
-                      <p className='tracking-[2px] font-semibold'>
-                        МЕНЮ
+                      <p>
+                        кушанья и питьё
                       </p>
                     </div>
                   </div>
@@ -166,7 +168,7 @@ export function FoodGallery() {
                 )}
               >
                 <BlurText
-                  text={'Галерея блюд'}
+                  text={'Галерея яств'}
                   delay={400}
                   animateBy="words"
                   direction="bottom"
@@ -180,7 +182,7 @@ export function FoodGallery() {
                 )}
               >
                 <BlurText
-                  text={'Авторской кухни'}
+                  text={'Авторская кухня'}
                   delay={400}
                   animateBy="words"
                   direction="bottom"
@@ -247,7 +249,8 @@ export function FoodGallery() {
               autoPlay
               loop
               muted
-              className='w-full h-full object-cover relative z-[2]'
+              controls={false}
+              className='w-full bg-video h-full object-cover relative z-[2]'
             />
 
             <div

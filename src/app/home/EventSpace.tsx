@@ -44,11 +44,11 @@ export function EventSpace({ }: Props) {
         className={cn(
           'relative z-[2]',
           'font-jost uppercase tracking-[3px] text-center',
-          'text-[18px] leading-[20px]',
-          'md:text-[36px] md:leading-[40px]',
+          'text-[18px] leading-[22px]',
+          'md:text-[36px] md:leading-[42px]',
         )}
       >
-        Пространство, <br />где важное звучит иначе
+        Терем, где слово важно,<br />а голос звучит по-особому
       </h2>
 
       <div
@@ -82,13 +82,13 @@ export function EventSpace({ }: Props) {
           >
             <div
               className={cn(
-                'w-full h-full rounded-[30px] bg-custom-black-100',
-                'flex items-center justify-center text-custom-white-102',
-                'md:text-[18px] md:leading-[18px]'
+                'w-full h-full rounded-[30px] bg-custom-black-100 uppercase',
+                'flex items-center justify-center text-custom-white-102/90',
+                'text-[14px] tracking-[1px] font-semibold'
               )}
             >
               <p>
-                Организовать событие
+                Устроить вечер
               </p>
             </div>
           </div>

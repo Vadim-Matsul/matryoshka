@@ -21,7 +21,7 @@ export function SpecialForGuests({ }: Props) {
 
   return (
     <section
-      className='1_5xl:mx-auto 1_5xl:max-w-[1440px]'
+      className='1_5xl:mx-auto 1_5xl:max-w-360'
     >
       <div className='h-[655px] md:h-[955px] rounded-t-2xl overflow-hidden relative'>
         <AnimatedImage
@@ -40,7 +40,7 @@ export function SpecialForGuests({ }: Props) {
 
         <div
           className={cn(
-            'absolute left-0 bottom-0 right-0 z-[2]',
+            'absolute left-0 -bottom-[2px] right-0 z-[2]',
             'h-[30%]',
             'bg-gradient-to-b from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
           )}
@@ -52,15 +52,14 @@ export function SpecialForGuests({ }: Props) {
         className={cn(
           'flex flex-col',
           'py-[90px] gap-[60px]',
-          'md:gap-[100px] md:py-[110px]'
+          'md:gap-[80px] md:py-[110px]'
         )}
       >
         <div
           className={cn(
             'text-center relative',
-            'flex flex-col gap-4 md:gap-6',
-            'max-w-[300px] mx-auto w-full',
-            'md:max-w-[440px]'
+            'flex flex-col gap-4 md:gap-6 px-[20px]',
+            'max-w-[390px] w-full md:max-w-[540px] mx-auto w-full',
           )}
         >
           <h2
@@ -71,7 +70,7 @@ export function SpecialForGuests({ }: Props) {
             )}
           >
             <BlurText
-              text="Создайте свой особенный момент"
+              text="Сотворите свой вечер"
               delay={300}
               animateBy="words"
               direction="bottom"
@@ -83,7 +82,7 @@ export function SpecialForGuests({ }: Props) {
             className={cn(
               'font-jost ',
               'text-[14px] leading-[16px]',
-              'md:text-[18px] leading-[22px] md:max-w-[300px] md:mx-auto',
+              'md:text-[18px] leading-[22px]',
             )}
           >
             <FadeContent
@@ -94,7 +93,7 @@ export function SpecialForGuests({ }: Props) {
               initialOpacity={0}
             >
               <p>
-                Мы ценим каждый визит и делимся особым гостеприимством
+                Каждого гостя встречаем по-доброму — с&nbsp;вниманием, настроением и&nbsp;настоящим гостеприимством
               </p>
             </FadeContent>
           </div>
@@ -459,12 +458,13 @@ function SpecialGuestsForm(props: SpecialGuestsFormProps) {
                   >
                     <div
                       className={cn(
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center text-custom-white-102'
+                        'w-full h-full rounded-[30px] bg-custom-black-100 uppercase',
+                        'flex items-center justify-center text-custom-white-102/90',
+                        'text-[14px] tracking-[1px] font-semibold'
                       )}
                     >
                       <p>
-                        Забронировать стол
+                        Ко двору званому
                       </p>
                     </div>
                   </div>

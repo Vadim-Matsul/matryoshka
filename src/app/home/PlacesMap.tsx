@@ -78,7 +78,7 @@ export function PlacesMap({ }: Props) {
             easing="ease-out"
             initialOpacity={0}
             className={cn(
-              'mx-auto'
+              'mx-auto flex flex-col gap-2'
             )}
           >
             <h2
@@ -88,8 +88,17 @@ export function PlacesMap({ }: Props) {
                 'md:text-[36px] md:leading-[40px] md:tracking-[6px]'
               )}
             >
-              Ждём вас <br className='hidden md:block' /> ежедневно
+              РАДЫ ГОСТЮ
             </h2>
+            <p
+              className={cn(
+                'font-jost uppercase text-center text-custom-white-101',
+                'text-[10px] leading-[10px] tracking-[1.25px]',
+                'md:text-[16px] md:leading-[16px] md:tracking-[4.8px]'
+              )}
+            >
+              с четверга по субботу
+            </p>
           </FadeContent>
 
           <div

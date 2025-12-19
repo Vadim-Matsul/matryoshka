@@ -33,15 +33,15 @@ export enum BLOCKS_IDS_ENUM {
 export const anchors = [
   {
     id: BLOCKS_IDS_ENUM.ABOUT,
-    title: 'О НАС'
+    title: 'О МАТРЕШКЕ'
   },
   {
     id: BLOCKS_IDS_ENUM.CONTACTS,
-    title: 'КОНТАКТЫ'
+    title: 'Как нас найти'
   },
   {
     id: BLOCKS_IDS_ENUM.MENU,
-    title: 'МЕНЮ'
+    title: 'Кушанья и питьё'
   }
 ]
 
@@ -344,7 +344,7 @@ export function Header({ }: Props) {
           <Drawer.Content
             aria-describedby='навигация'
             className={cn(
-              'top-[70px]',
+              'top-[40px] md:top-[70px]',
               'bg-custom-black-100',
               'fixed z-[51] rounded-l-[10px] bottom-0 right-0',
               // 'shadow-white shadow-lg',
