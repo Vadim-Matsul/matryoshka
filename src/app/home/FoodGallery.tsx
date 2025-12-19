@@ -201,7 +201,7 @@ export function FoodGallery() {
                 className={cn(
                   'rounded-[30px] overflow-hidden ',
                   'hover:scale-[.95] focus:scale-[.95] transition-all',
-                  'w-[170px]'
+                  'w-[200px]'
                 )}
               >
                 <StarBorder
@@ -226,13 +226,13 @@ export function FoodGallery() {
                   >
                     <div
                       className={cn(
-                        'tracking-[2px] font-semibold',
-                        'w-full h-full rounded-[30px] bg-custom-black-100',
-                        'flex items-center justify-center'
+                        'w-full h-full rounded-[30px] bg-custom-black-100 uppercase',
+                        'flex items-center justify-center text-custom-white-102/90',
+                        'text-[14px] tracking-[1px] font-semibold'
                       )}
                     >
                       <p>
-                        МЕНЮ
+                        кушанья и питьё
                       </p>
                     </div>
                   </div>
