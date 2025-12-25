@@ -16,6 +16,7 @@ import { cn } from '@/utils/cn';
 
 type Props = {
   images: string[];
+  loading?: 'eager' | 'lazy';
   classNames?: {
     wrapperClassName?: string;
     swiperClassName?: string;
@@ -23,7 +24,7 @@ type Props = {
   }
 };
 
-export function ImagesGallery({ images, ...props }: Props) {
+export function ImagesGallery({ images, loading = 'lazy', ...props }: Props) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -56,7 +57,7 @@ export function ImagesGallery({ images, ...props }: Props) {
               }}
               alt={`image-${idx}`}
               draggable={false}
-              loading='lazy'
+              loading={loading}
               decoding='async'
               className={cn(
                 'select-none cursor-zoom-in',

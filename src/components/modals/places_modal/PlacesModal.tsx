@@ -170,6 +170,7 @@ export function PlacesModal({
                 {nextStep === PlacesModalNextSteps.MAIN_MENU && (
                   <ImagesGallery
                     images={brone_table_config[PlacesModalNextSteps.MAIN_MENU].images}
+                    loading='eager'
                     classNames={{
                       wrapperClassName: cn(
                         // 'bg-red-500',

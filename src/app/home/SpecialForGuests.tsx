@@ -2,7 +2,7 @@ import { cn } from '@/utils/cn'
 import { Controller, useForm } from 'react-hook-form';
 import { IMaskInput } from 'react-imask';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Select, Transition } from '@headlessui/react'
-import { Fragment, SVGProps, useState } from 'react';
+import { Fragment, SVGProps, useEffect, useRef, useState } from 'react';
 import { pageLinkKeys, pageLinks } from '@/configs/links';
 import { StarBorder } from '@/bits/animations/StarBorder/StarBorder';
 import { BlurText } from '@/bits/BlurText';
@@ -13,38 +13,140 @@ import Lottie from 'lottie-react';
 import LottieSuccessJSON from '../../../public/lottie/lottie_success.json';
 import { AnimatedImage } from '@/bits/AnimatedImage';
 import { BLOCKS_IDS_ENUM } from '@/components/header';
+import { EffectCoverflow, Keyboard, Mousewheel, Pagination, Autoplay as AutoplaySwiper } from 'swiper/modules';
+import Autoplay from 'embla-carousel-autoplay';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+const conf = {
+  images: {
+    mobile: [
+      '/images/place_mobile_1.webp',
+      '/images/place_mobile_2.webp',
+      '/images/place_mobile_3.webp',
+      '/images/place_mobile_4.webp',
+    ],
+    desktop: [
+      '/images/place_desktop_1.webp',
+      '/images/place_desktop_2.webp',
+      '/images/place_desktop_3.webp',
+    ]
+  }
+}
 
 type Props = {}
 
 export function SpecialForGuests({ }: Props) {
 
+  const swiperRef = useRef<any>(null);
+
+  const [images, setImages] = useState(conf.images.mobile)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    function onResize() {
+      const isDesktop = window.innerWidth >= 500;
+      setImages(isDesktop ? conf.images.desktop : conf.images.mobile)
+    }
+
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+    }
+  }, [])
 
   return (
     <section
       className='1_5xl:mx-auto 1_5xl:max-w-360'
     >
       <div className='h-[655px] md:h-[955px] rounded-t-2xl overflow-hidden relative'>
-        <AnimatedImage
-          src='/images/place.webp'
-          alt='матрёшка'
-          options={{
-            blur: 20,
-            scale: 1,
-            delay: 0,
-            duration: 1.5,
+        <Swiper
+          modules={[Pagination, Mousewheel, Keyboard, AutoplaySwiper, EffectCoverflow]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          pagination={{
+            clickable: true,
           }}
-          className={cn(
-            'w-full h-full object-cover relative z-[1]',
-          )}
-        />
+          mousewheel={{ forceToAxis: true }}
+          keyboard={{ enabled: true }}
+          spaceBetween={16}
+          slidesPerView={1}
+          loop={images.length > 3}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          effect="coverflow"
+          grabCursor
+          centeredSlides
+          coverflowEffect={{
+            rotate: 20,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: true,
+          }}
 
-        <div
           className={cn(
-            'absolute left-0 -bottom-[2px] right-0 z-[2]',
-            'h-[30%]',
-            'bg-gradient-to-b from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
+            'h-full overflow-hidden relative'
           )}
-        />
+        >
+          {images.map((img, idx) => {
+            return (
+              <SwiperSlide
+                key={idx}
+                className={cn(
+                  'relative'
+                )}
+              >
+                <div
+                  className='w-full h-full absolute inset-0 z-[2]'
+                >
+                  <AnimatedImage
+                    src={img}
+                    alt={idx + 'image'}
+                    options={{
+                      blur: 20,
+                      scale: 1,
+                      delay: 0,
+                      duration: 2,
+                    }}
+                    className={cn(
+                      'w-full h-full object-cover'
+                    )}
+                  />
+
+                  <div
+                    className={cn(
+                      'via-40% via-custom-black-100/70 absolute left-0 right-0 top-0 bg-gradient-to-b from-custom-black-100 to-transparent',
+                      'h-[20%]'
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      'via-50% via-custom-black-100/90 absolute left-0 right-0 bottom-0 bg-gradient-to-t from-custom-black-100 to-transparent',
+                      'h-[20%]'
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      'via-40% via-custom-black-100/70 absolute left-0 bottom-0 top-0 bg-gradient-to-r from-custom-black-100 to-transparent',
+                      'w-[10%]'
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      'via-40% via-custom-black-100/90 absolute top-0 right-0 bottom-0 bg-gradient-to-l from-custom-black-100 to-transparent',
+                      'w-[10%]'
+                    )}
+                  />
+                </div>
+              </SwiperSlide>
+            )
+          })}
+        </Swiper>
       </div>
 
       <article

@@ -48,8 +48,13 @@ export function FoodGallery() {
               src='/videos/drinks.mp4'
               autoPlay
               loop
-              muted
               controls={false}
+              muted
+              playsInline
+              webkit-playsinline="true"
+              preload="none"
+              disablePictureInPicture
+              controlsList="nodownload noplaybackrate nofullscreen"
               className='w-full bg-video h-full object-cover relative z-[2]'
             />
 
@@ -248,8 +253,13 @@ export function FoodGallery() {
               src='/videos/drinks.mp4'
               autoPlay
               loop
-              muted
               controls={false}
+              muted
+              playsInline
+              webkit-playsinline="true"
+              preload="none"
+              disablePictureInPicture
+              controlsList="nodownload noplaybackrate nofullscreen"
               className='w-full bg-video h-full object-cover relative z-[2]'
             />
 
