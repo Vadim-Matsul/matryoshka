@@ -18,23 +18,32 @@ type MoscowDay = 'thursday' | 'friday' | 'saturday' | 'other';
 export function getMoscowDay(): MoscowDay {
   const now = new Date();
 
-  // текущее UTC-время
   const utcTime = now.getTime() + now.getTimezoneOffset() * 60_000;
-
-  // Москва GMT+3
   const moscowTime = new Date(utcTime + 3 * 60 * 60 * 1000);
 
   const day = moscowTime.getDay();
-  // 0 — воскресенье, 4 — четверг, 5 — пятница, 6 — суббота
+  const hour = moscowTime.getHours();
 
-  if (day === 4) return 'thursday';
-  if (day === 5) return 'friday';
-  if (day === 6) return 'saturday';
+  // чт 20:00-03:00
+  const isThursday = day === 4 || (day === 5 && hour < 3);
+  if (isThursday) {
+    return 'thursday';
+  }
+
+  // пт 20:00-05:00
+  const isFriday = (day === 5 && hour >= 3) || (day === 6 && hour < 5);
+  if (isFriday) {
+    return 'friday';
+  }
+
+  // сб 20:00-05:00
+  const isSaturday = (day === 6 && hour >= 5) || (day === 0 && hour < 5);
+  if (isSaturday) {
+    return 'saturday';
+  }
 
   return 'other';
 }
-
-
 
 
 const GoogleMapID = 'imc=[-ucbvy54v54-054ch54=c548';
