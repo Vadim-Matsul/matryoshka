@@ -24,11 +24,15 @@ const conf = {
       '/images/place_mobile_2.webp',
       '/images/place_mobile_3.webp',
       '/images/place_mobile_4.webp',
+      '/images/place_mobile_5.webp',
     ],
     desktop: [
       '/images/place_desktop_1.webp',
       '/images/place_desktop_2.webp',
       '/images/place_desktop_3.webp',
+      '/images/place_desktop_4.webp',
+      '/images/place_desktop_5.webp',
+      '/images/place_desktop_6.webp',
     ]
   }
 }
