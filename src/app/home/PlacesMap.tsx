@@ -24,6 +24,7 @@ export function getMoscowDay(): MoscowDay {
   const day = moscowTime.getDay();
   const hour = moscowTime.getHours();
 
+
   // чт 20:00-03:00
   const isThursday = day === 4 || (day === 5 && hour < 3);
   if (isThursday) {
