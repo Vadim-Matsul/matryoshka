@@ -328,7 +328,7 @@ export function Header({ }: Props) {
         <Drawer.Overlay
           aria-describedby='навигация'
           onClick={() => setIsOpen(false)}
-          className='fixed inset-0 z-[20] bg-custom-black-100/5 backdrop-blur-[5px]'
+          className='fixed  inset-0 z-[20] bg-custom-black-100/5 backdrop-blur-[5px]'
         >
           <div
             className='w-[20vw] z-[2] fixed top-0 bottom-0 right-0 bg-custom-black-100 translate-x-[20px]'
@@ -345,11 +345,11 @@ export function Header({ }: Props) {
             aria-describedby='навигация'
             className={cn(
               'top-[40px] md:top-[70px]',
+              'max-h-[calc(100vh-40px)] md:max-h-[calc(100vh-70px)]',
               'bg-custom-black-100',
               'fixed z-[51] rounded-l-[10px] bottom-0 right-0',
               // 'shadow-white shadow-lg',
               'w-[80vw] sm:max-w-[400px]',
-              'max-h-[calc(100vh-52px)] md:max-h-[calc(100vh-70px)]',
               'overflow-y-auto overflow-x-hidden',
               'flex flex-col justify-between pt-[30px] pb-[60px]'
             )}

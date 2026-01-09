@@ -19,6 +19,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const conf = {
   images: {
+    mobileMaxPX: 440,
     mobile: [
       '/images/place_mobile_1.webp',
       '/images/place_mobile_2.webp',
@@ -43,13 +44,16 @@ export function SpecialForGuests({ }: Props) {
 
   const swiperRef = useRef<any>(null);
 
-  const [images, setImages] = useState(conf.images.mobile)
+  const [images, setImages] = useState(() => {
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= conf.images.mobileMaxPX;
+    return isDesktop ? conf.images.desktop : conf.images.mobile;
+  })
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     function onResize() {
-      const isDesktop = window.innerWidth >= 500;
+      const isDesktop = window.innerWidth >= conf.images.mobileMaxPX;
       setImages(isDesktop ? conf.images.desktop : conf.images.mobile)
     }
 
@@ -115,7 +119,7 @@ export function SpecialForGuests({ }: Props) {
                       blur: 20,
                       scale: 1,
                       delay: 0,
-                      duration: 2,
+                      duration: 1.5,
                     }}
                     className={cn(
                       'w-full h-full object-cover'
