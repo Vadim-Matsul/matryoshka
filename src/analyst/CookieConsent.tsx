@@ -1,15 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { cn } from '@/utils/cn';
 import { pageLinkKeys, pageLinks } from '@/configs/links';
-import { mittEmitter, MittEventBusEvents } from '@/ui/eventBus';
+import { mittEmitter, MittEventBusEvents } from './eventBus';
 import { StarBorder } from '@/bits/animations/StarBorder/StarBorder';
 
 export const cookieConf = {
-  cookie_accept_key: 'cookie_consent',
-  cookie_accept_value: 'accepted',
+  cookie_accept_key: 'cookie_consent_matryoshka',
+  cookie_accept_value: 'accepted_matryoshka',
 }
 
 export function CookieConsent() {
@@ -17,6 +16,7 @@ export function CookieConsent() {
 
   useEffect(() => {
     const consent = localStorage.getItem(cookieConf.cookie_accept_key);
+
     if (!consent) {
       setVisible(true);
     }
@@ -92,28 +92,6 @@ export function CookieConsent() {
             </div>
           </StarBorder>
         </div>
-
-        {/* <button
-          onClick={acceptCookies}
-          className={cn(
-            'bg-transparent text-custom-white-200 cursor-pointer',
-            'w-full rounded-[90px]',
-            'border-[1px] border-custom-white-200',
-            'flex items-center justify-center',
-            'h-[42px]',
-            'md:min-w-[320px] md:max-w-[320px]',
-            'xl:min-w-[450px] xl:max-w-[450px]',
-          )}
-        >
-          <p
-            className={cn(
-              'font-geist font-semibold leading-none',
-              'text-[16px]'
-            )}
-          >
-            Согласен
-          </p>
-        </button> */}
       </div>
     </div>
   );

@@ -7,10 +7,9 @@ import 'normalize.css'
 import { cn } from '@/utils/cn';
 import { Providers } from './providers';
 import Script from 'next/script';
-import { CookieConsent } from '@/components/CookieConsent';
-import { GoogleAnal } from '@/components/GoogleAnal';
-import { YandexAnal } from '@/components/YandexAnal';
-
+import { CookieConsent } from '@/analyst/CookieConsent';
+import { GoogleAnal } from '@/analyst/GoogleAnal';
+import { YandexAnal } from '@/analyst/YandexAnal';
 
 const jostFont = Jost({
   variable: '--font-jost',

@@ -4,9 +4,9 @@
 import Script from 'next/script'
 import { useEffect, useState } from 'react';
 import { cookieConf } from './CookieConsent';
-import { mittEmitter, MittEventBusEvents } from '@/ui/eventBus';
+import { mittEmitter, MittEventBusEvents } from './eventBus';
 
-const NEXT_PUBLIC_YM_COUNTER_ID = '';
+const NEXT_PUBLIC_YM_COUNTER_ID = '106463553';
 const isDEV = process.env.NODE_ENV === 'development';
 
 type Props = {}
@@ -52,7 +52,7 @@ export function YandexAnal({ }: Props) {
                 accurateTrackBounce:true,
                 webvisor:true
             });
-            console.log("✅ Yandex.Metrika подключен");
+            console.log("✅ Yandex.Metrika 1 подключен");
           `}
     </Script>
   )

@@ -4,11 +4,11 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script'
 import { useEffect, useState } from 'react';
 import { cookieConf } from './CookieConsent';
-import { mittEmitter, MittEventBusEvents } from '@/ui/eventBus';
+import { mittEmitter, MittEventBusEvents } from './eventBus';
 
 
 type Props = {}
-const NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID = '';
+const NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID = 'G-1XPNXKQP3V';
 const isDEV = process.env.NODE_ENV === 'development';
 
 export function GoogleAnal({ }: Props) {
