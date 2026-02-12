@@ -22,9 +22,9 @@ const conf = {
     mobileMaxPX: 440,
     mobile: [
       '/images/place_mobile_1.webp',
-      '/images/place_mobile_2.webp',
-      '/images/place_mobile_3.webp',
       '/images/place_mobile_4.webp',
+      '/images/place_mobile_3.webp',
+      '/images/place_mobile_2.webp',
       '/images/place_mobile_5.webp',
     ],
     desktop: [
