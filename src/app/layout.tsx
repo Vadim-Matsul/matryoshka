@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Baskervville, Jost } from 'next/font/google';
+import { Jost } from 'next/font/google';
 import 'swiper/css';
 import 'react-medium-image-zoom/dist/styles.css'
 import '../style/globals.css';
