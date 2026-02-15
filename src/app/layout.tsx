@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description: 'Пространство, в котором каждый гость становится частью большой истории'
 };
 
-const GOOGLE_API_KEY = "AIzaSyDoXDf6jB5l9l-YLGXkFckmVR5i3LPbP7s";
+const GOOGLE_API_KEY = "AIzaSyBjxlpr7fOQhxTUGOgid331JxN-cWQ0t9c";
 
 export default function RootLayout({
   children,
