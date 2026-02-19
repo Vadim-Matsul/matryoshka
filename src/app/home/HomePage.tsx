@@ -18,8 +18,8 @@ export default function HomePage({ }: Props) {
       <Header />
       <section className='mt-[27px] md:mt-[64px] font-jost'>
         <Intro />
-        <Places />
         <FoodGallery />
+        <Places />
         <SpecialForGuests />
         <EventSpace />
         <PlacesMap />
