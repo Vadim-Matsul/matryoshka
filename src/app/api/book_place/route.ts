@@ -3,12 +3,23 @@ import { NextResponse } from 'next/server';
 
 const getCurDate = () => {
   const now = new Date();
-  
+
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const day = String(now.getDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;
+};
+
+const remarkedErrors: Record<string, { field: string; message: string }> = {
+  '`reserve`.`date`': {
+    field: 'date',
+    message: 'Некорректная дата',
+  },
+  '`reserve`.`time`': {
+    field: 'time',
+    message: 'Некорректное время',
+  },
 };
 
 const getNextTimeSlotMSK = (stepMinutes = 30): string => {
@@ -40,11 +51,8 @@ const config = {
 };
 
 export async function POST(req: Request) {
-  const date = getCurDate();
-  console.log(date);
-
   try {
-    const { name, phone }: BookPlaceRequestModel = await req.json();
+    const { name, phone, place, date, time, guests, comment }: BookPlaceRequestModel = await req.json();
 
     const request_id = Date.now();
 
@@ -54,13 +62,13 @@ export async function POST(req: Request) {
       reserve: {
         name,
         phone,
-        date: getCurDate(),
-        time: getNextTimeSlotMSK(),
-        guests_count: 100,
+        date,
+        time,
+        guests_count: guests,
+        comment,
       },
       request_id,
     };
-    console.log(body)
 
     const response = await fetch(config.api_url, {
       method: 'POST',
@@ -69,13 +77,34 @@ export async function POST(req: Request) {
     });
 
     const data = await response.json();
+
     if (data.status === 'error') {
-      throw new Error(data.message);
+      const matchedKey = Object.keys(remarkedErrors).find(key => data.message?.includes(key));
+
+      const known = matchedKey ? remarkedErrors[matchedKey] : null;
+
+      if (known) {
+        return NextResponse.json(
+          {
+            field: known.field,
+            message: known.message,
+          },
+          { status: 400 },
+        );
+      }
+
+      return NextResponse.json(
+        {
+          field: null,
+          message: data.message || 'Неизвестная ошибка',
+        },
+        { status: 400 },
+      );
     }
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Reserve API error:', date, error);
+    console.error('Reserve API error:', error);
     return NextResponse.json({ error: 'Something went wrong' + error }, { status: 500 });
   }
 }

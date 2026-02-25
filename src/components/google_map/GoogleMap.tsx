@@ -158,6 +158,7 @@ export function GoogleMap({
   selectedMarker,
   className,
 }: Props) {
+  console.log('GoogleMap component render')
   const google = typeof window === "undefined" ? null : (window.google as any);
 
   const markersRef = useRef<MarkerItem[]>([]);

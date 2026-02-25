@@ -4,7 +4,6 @@ import { homeBlockIDs } from '@/configs/homeBlockIds';
 import { pageLinkKeys, pageLinks } from '@/configs/links'
 import { cn } from '@/utils/cn'
 import { usePathname } from 'next/navigation';
-import { InstagramIcon } from '../icons/InstagramIcon';
 import { matryoshka } from '@/configs/matryoshka';
 import { TelegramIcon } from '../icons/TelegramIcon';
 import { LogoIcon } from '../icons/LogoIcon';
@@ -59,18 +58,6 @@ export function Footer({ }: Props) {
         )}
       >
         <div className='flex flex-col gap-4'>
-          <a
-            href={matryoshka.instagram.href}
-            target='_blank'
-            className={cn(
-              'flex items-center gap-3',
-              'text-custom-white-500 hover:opacity-80 focus:opacity-80 transition-all',
-              'uppercase font-medium text-[12px] leading-[12px] tracking-[1px]'
-            )}
-          >
-            <InstagramIcon className='w-6 h-6' />
-            <span>matreshka_karaoke</span>
-          </a>
           <a
             href={matryoshka.telegram.href}
             target='_blank'
@@ -161,9 +148,9 @@ export function Footer({ }: Props) {
           </div>
         </div>
 
-        <p className='text-[12px] leading-[15px] font-medium uppercase tracking[1px] text-custom-grey-100 mt-[60px]'>
+        {/* <p className='text-[12px] leading-[15px] font-medium uppercase tracking[1px] text-custom-grey-100 mt-[60px]'>
           *Meta признана экстремистcкой организацией в России
-        </p>
+        </p> */}
 
         <p className='text-[12px] uppercase leading-[15px] font-medium uppercase tracking[1px] text-custom-grey-100 mt-5'>
           18+ Просим иметь при себе оригиналы документов, подтверждающих возраст
@@ -291,18 +278,6 @@ export function Footer({ }: Props) {
           <div className='flex flex-col justify-between'>
             <div className='flex flex-col items-center gap-4'>
               <a
-                href={matryoshka.instagram.href}
-                target='_blank'
-                className={cn(
-                  'flex items-center gap-3',
-                  'text-custom-white-500 hover:opacity-80 focus:opacity-80 transition-all',
-                  'uppercase font-medium text-[12px] leading-[12px] tracking-[1px]'
-                )}
-              >
-                <InstagramIcon className='w-6 h-6' />
-                <span>matreshka_karaoke</span>
-              </a>
-              <a
                 href={matryoshka.telegram.href}
                 target='_blank'
                 className={cn(
@@ -348,11 +323,11 @@ export function Footer({ }: Props) {
 
           <div className='flex flex-col justify-between'>
             <div className='flex grow flex-col justify-between items-end text-right'>
-              <p className='text-[12px] leading-[15px] font-medium w-[200px] tracking[1px] text-custom-white-500'>
+              {/* <p className='text-[12px] leading-[15px] font-medium w-[200px] tracking[1px] text-custom-white-500'>
                 *Meta признана экстремистcкой организацией в России
-              </p>
+              </p> */}
 
-              <p className='text-[12px] uppercase leading-[15px] font-medium w-[270px] uppercase tracking[1px] text-custom-white-500 mt-5'>
+              <p className='text-[12px] uppercase leading-[15px] font-medium w-[270px] uppercase tracking[1px] text-custom-white-500'>
                 18+ Просим иметь при себе оригиналы документов, подтверждающих возраст
               </p>
             </div>

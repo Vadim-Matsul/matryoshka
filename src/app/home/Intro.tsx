@@ -3,23 +3,25 @@ import { StarBorder } from '@/bits/animations/StarBorder/StarBorder'
 import { BlurText } from '@/bits/BlurText'
 import { FadeContent } from '@/bits/FadeContent'
 import { SplitText } from '@/bits/SplitText'
+import { YandexMapIcon } from '@/components/icons/YandexMapIcon'
 import { PlacesModalNextSteps } from '@/components/modals/places_modal/config'
+import { matryoshka } from '@/configs/matryoshka'
 import { cn } from '@/utils/cn'
 import { useEffect, useRef, useState } from 'react'
+import { getMoscowDay } from './PlacesMap'
 
 
 type Props = {}
 
 export function Intro({ }: Props) {
-  const [isOpenBroneModal, setIsOpenBroneModal] = useState(false)
 
   return (
     <>
       <section
         className={cn(
           'relative',
-          'h-[700px] sm:h-[850px] md:h-[1150px] 1_5lg:h-[1345px]',
-          'w-full',
+          'h-[700px] sm:h-[850px]',
+          'w-full rounded-b-2xl overflow-hidden',
         )}
       >
         <div
@@ -29,70 +31,49 @@ export function Intro({ }: Props) {
             'flex justify-end flex-col',
           )}
         >
-          <section
+          <div
             className={cn(
-              'flex items-center justify-between',
-              'pb-[30px] px-[16px] md:pb-[80px] md:px-[80px]',
-              'uppercase',
-              cn(
-                'uppercase font-medium',
-                'text-[8px] leading-[10px] tracking-[2px]',
-                'sm:text-[18px] sm:leading-[20px] sm:tracking-[3px] '
-              )
+              'relative z-[5]',
+              'mb-[30px]',
+              'flex flex-col gap-3 tracking-[2px] uppercase',
+              'text-[12px] leading-[12px] opacity-50 font-medium',
+              'md:text-[14px] md:leading-[14px] md:gap-4 md:mb-[40px]',
+              '1_5lg:text-[16px] 1_5lg:leading-[16px] 1_5lg:gap-5 1_5lg:mb-[50px]',
             )}
           >
-            <p>MOSCOW</p>
-            <p className='text-center'>караоке-бар</p>
-            <p>{new Date().getFullYear()}</p>
-          </section>
-
-          {/* <FadeContent
-            blur={true}
-            delay={4000}
-            duration={1000}
-            easing="ease-out"
-            initialOpacity={0}
-          >
-            <div
+            <a
+              href={matryoshka.adress.href}
+              target='_blank'
               className={cn(
-                'mx-auto',
-                'rounded-[30px] overflow-hidden ',
-                'hover:scale-[.95] focus:scale-[.95] transition-all',
-                'w-[190px] h-[42px]',
-                'lg:w-[200px] lg:h-[48px]  1_5xl:hidden'
+                'flex items-center text-custom-white-101 whitespace-nowrap w-min mx-auto gap-2',
               )}
             >
-              <StarBorder
-                as="button"
-                onClick={() => setIsOpenBroneModal(true)}
-                speed="3s"
-                thickness={1.5}
-                className={cn(
-                  'cursor-pointer pb-0.5'
-                )}
+              {matryoshka.adress.name}
+            </a>
+
+            <a
+              href={matryoshka.phone.href}
+              className='text-custom-white-101 whitespace-nowrap w-min mx-auto'
+            >
+              {matryoshka.phone.str}
+            </a>
+
+            {getMoscowDay() !== 'other' && (
+              <p
+                className='text-custom-white-101 whitespace-nowrap w-min mx-auto'
               >
-                <div
-                  className={cn(
-                    'relative inline-flex rounded-[30px] p-[1px]',
-                    'bg-[radial-gradient(240px_120px_at_95%_8%,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.18)_38%,transparent_70%),radial-gradient(520px_220px_at_50%_100%,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.20)_45%,transparent_80%),linear-gradient(180deg,rgba(255,255,255,0.26)_0%,rgba(255,255,255,0.10)_45%,rgba(255,255,255,0.06)_100%)]',
-                    'shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-1px_0_rgba(0,0,0,0.30)]',
-                    'w-full h-full'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'w-full h-full rounded-[30px] bg-custom-black-100',
-                      'flex items-center justify-center'
-                    )}
-                  >
-                    <span className="text-custom-white-100 font-semibold font-jost leading-tight">
-                      Забронировать
-                    </span>
-                  </div>
-                </div>
-              </StarBorder>
-            </div>
-          </FadeContent> */}
+                Сегодня до {getMoscowDay() === 'thursday' ? '03:00' : '05:00'}
+              </p>
+            )}
+          </div>
+
+          <div
+            className={cn(
+              'absolute left-0 bottom-0 right-0 z-[2]',
+              'h-[40%]',
+              'bg-gradient-to-b from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
+            )}
+          />
         </div>
 
         <div
@@ -101,25 +82,20 @@ export function Intro({ }: Props) {
             '1_5xl:w-[1440px] 1_5xl:mx-auto rounded-b-2xl overflow-hidden'
           )}
         >
-          <picture
-            className='w-full h-full'
+          <video
+            autoPlay
+            loop
+            controls={false}
+            muted
+            playsInline
+            preload="none"
+            disablePictureInPicture
+            controlsList="nodownload noplaybackrate nofullscreen"
+            className="w-full bg-video h-full object-cover relative z-[2]"
           >
-
-            <AnimatedImage
-              src='/images/intro.webp'
-              alt=''
-              options={{
-                blur: 20,
-                scale: 1.3,
-                delay: 0,
-                duration: 1.5,
-              }}
-              className={cn(
-                'w-full h-full object-cover relative z-[1] select-none',
-              )}
-            />
-
-          </picture>
+            <source src="/videos/intro_desktop.mp4" media="(min-width: 1024px)" />
+            <source src="/videos/intro_mobile.mp4" />
+          </video>
 
           {/* <video
             src='/videos/intro.mp4'

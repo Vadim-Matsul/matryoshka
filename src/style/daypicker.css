@@ -1,0 +1,27 @@
+.rdp-button_previous > svg,
+.rdp-button_next > svg {
+  fill: var(--color-custom-red-100);
+}
+
+/* .rdp-day_button {
+  background-color: red !important;
+} */
+
+.rdp-day.rdp-selected > .rdp-day_button {
+  border-color: var(--color-custom-red-100) !important;
+}
+
+.rdp-today {
+  color: var(--color-custom-red-100) !important;
+}
+
+.rdp-disabled:hover {
+  background-color: transparent;
+}
+
+.rdp-caption_label {
+  text-transform: uppercase;
+  font-family: var(--font-jost);
+  font-size: 16px;
+  letter-spacing: 1px;
+}

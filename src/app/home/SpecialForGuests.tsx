@@ -1,8 +1,7 @@
 import { cn } from '@/utils/cn'
 import { Controller, useForm } from 'react-hook-form';
 import { IMaskInput } from 'react-imask';
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Select, Transition } from '@headlessui/react'
-import { Fragment, SVGProps, useEffect, useRef, useState } from 'react';
+import { SVGProps, useEffect, useRef, useState } from 'react';
 import { pageLinkKeys, pageLinks } from '@/configs/links';
 import { StarBorder } from '@/bits/animations/StarBorder/StarBorder';
 import { BlurText } from '@/bits/BlurText';
@@ -11,152 +10,37 @@ import { BronePlacePOST } from '@/api/BronePlacePOST';
 import { AnimatePresence, motion } from 'motion/react';
 import Lottie from 'lottie-react';
 import LottieSuccessJSON from '../../../public/lottie/lottie_success.json';
-import { AnimatedImage } from '@/bits/AnimatedImage';
 import { BLOCKS_IDS_ENUM } from '@/components/header';
-import { EffectCoverflow, Keyboard, Mousewheel, Pagination, Autoplay as AutoplaySwiper } from 'swiper/modules';
-import Autoplay from 'embla-carousel-autoplay';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { DayPicker } from 'react-day-picker'
+import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
+import 'react-day-picker/dist/style.css'
+import '@/style/daypicker.css'
+import '@vaadin/time-picker'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs, { Dayjs } from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-const conf = {
-  images: {
-    mobileMaxPX: 440,
-    mobile: [
-      '/images/place_mobile_1.webp',
-      '/images/place_mobile_4.webp',
-      '/images/place_mobile_3.webp',
-      '/images/place_mobile_2.webp',
-      '/images/place_mobile_5.webp',
-    ],
-    desktop: [
-      '/images/place_desktop_1.webp',
-      '/images/place_desktop_2.webp',
-      '/images/place_desktop_3.webp',
-      '/images/place_desktop_4.webp',
-      '/images/place_desktop_5.webp',
-      '/images/place_desktop_6.webp',
-    ]
-  }
-}
+
+dayjs.extend(customParseFormat)
+
+const SCHEDULE = {
+  4: { start: '20:00', end: '03:00' }, // чт
+  5: { start: '20:00', end: '05:00' }, // пт
+  6: { start: '20:00', end: '05:00' }, // сб
+} as const
 
 type Props = {}
 
 export function SpecialForGuests({ }: Props) {
 
-  const swiperRef = useRef<any>(null);
-
-  const [images, setImages] = useState(() => {
-    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= conf.images.mobileMaxPX;
-    return isDesktop ? conf.images.desktop : conf.images.mobile;
-  })
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    function onResize() {
-      const isDesktop = window.innerWidth >= conf.images.mobileMaxPX;
-      setImages(isDesktop ? conf.images.desktop : conf.images.mobile)
-    }
-
-    window.addEventListener('resize', onResize);
-    window.addEventListener('orientationchange', onResize);
-
-    return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('orientationchange', onResize);
-    }
-  }, [])
 
   return (
     <section
       className='1_5xl:mx-auto 1_5xl:max-w-360'
     >
-      <div className='h-[655px] md:h-[955px] rounded-t-2xl overflow-hidden relative'>
-        <Swiper
-          modules={[Pagination, Mousewheel, Keyboard, AutoplaySwiper, EffectCoverflow]}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          pagination={{
-            clickable: true,
-          }}
-          mousewheel={{ forceToAxis: true }}
-          keyboard={{ enabled: true }}
-          spaceBetween={16}
-          slidesPerView={1}
-          loop={images.length > 3}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          effect="coverflow"
-          grabCursor
-          centeredSlides
-          coverflowEffect={{
-            rotate: 20,
-            stretch: 0,
-            depth: 300,
-            modifier: 1,
-            slideShadows: true,
-          }}
-
-          className={cn(
-            'h-full overflow-hidden relative'
-          )}
-        >
-          {images.map((img, idx) => {
-            return (
-              <SwiperSlide
-                key={idx}
-                className={cn(
-                  'relative'
-                )}
-              >
-                <div
-                  className='w-full h-full absolute inset-0 z-[2]'
-                >
-                  <AnimatedImage
-                    src={img}
-                    alt={idx + 'image'}
-                    options={{
-                      blur: 20,
-                      scale: 1,
-                      delay: 0,
-                      duration: 1.5,
-                    }}
-                    className={cn(
-                      'w-full h-full object-cover'
-                    )}
-                  />
-
-                  <div
-                    className={cn(
-                      'via-40% via-custom-black-100/70 absolute left-0 right-0 top-0 bg-gradient-to-b from-custom-black-100 to-transparent',
-                      'h-[20%]'
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      'via-50% via-custom-black-100/90 absolute left-0 right-0 bottom-0 bg-gradient-to-t from-custom-black-100 to-transparent',
-                      'h-[20%]'
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      'via-40% via-custom-black-100/70 absolute left-0 bottom-0 top-0 bg-gradient-to-r from-custom-black-100 to-transparent',
-                      'w-[10%]'
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      'via-40% via-custom-black-100/90 absolute top-0 right-0 bottom-0 bg-gradient-to-l from-custom-black-100 to-transparent',
-                      'w-[10%]'
-                    )}
-                  />
-                </div>
-              </SwiperSlide>
-            )
-          })}
-        </Swiper>
-      </div>
-
       <article
         id={BLOCKS_IDS_ENUM.BRONE}
         className={cn(
@@ -228,21 +112,32 @@ type FormValues = {
   name: string;
   phone: string;
   agree: boolean;
+  date: string;
+  time: string;
+  guests: number;
+  comment?: string;
 };
 type SpecialGuestsFormProps = {}
 function SpecialGuestsForm(props: SpecialGuestsFormProps) {
-
   const {
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm<FormValues>({
     defaultValues: {
       name: "",
       phone: "",
-      agree: false
+      date: '',
+      time: '',
+      guests: 1,
+      comment: '',
+      agree: false,
     },
   });
+
+  const [openCalendar, setOpenCalendar] = useState(false)
+  const calendarRef = useRef<HTMLDivElement | null>(null)
 
   const [isSuccessSubmit, setIsSuccessSubmit] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -253,9 +148,7 @@ function SpecialGuestsForm(props: SpecialGuestsFormProps) {
 
     try {
       const response = await bronePlacePOST.request({
-        agree: data.agree,
-        name: data.name,
-        phone: data.phone,
+        ...data,
         place: 'матрёшка'
       })
 
@@ -268,6 +161,42 @@ function SpecialGuestsForm(props: SpecialGuestsFormProps) {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    // Calendar обработчик клика закрытия вне
+    function handleClickOutside(event: MouseEvent) {
+      if (!calendarRef.current) return
+
+      if (!calendarRef.current.contains(event.target as Node)) {
+        setOpenCalendar(false)
+      }
+    }
+
+    if (openCalendar) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [openCalendar])
+
+  useEffect(() => {
+    // Calendar обработчик клика закрытия на ESC
+    function handleEsc(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setOpenCalendar(false)
+      }
+    }
+
+    if (openCalendar) {
+      document.addEventListener('keydown', handleEsc)
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEsc)
+    }
+  }, [openCalendar])
 
   return (
     <AnimatePresence mode='popLayout'>
@@ -408,6 +337,236 @@ function SpecialGuestsForm(props: SpecialGuestsFormProps) {
                 />
               </FadeContent>
             </div>
+
+            <div className='flex flex-col gap-3 md:flex-row'>
+              <div key='date' className={cn('md:w-1/2 relative z-[10]')}>
+                <FadeContent blur duration={1000} easing="ease-out" initialOpacity={0}>
+                  <Controller
+                    name="date"
+                    control={control}
+                    rules={{ required: "Выберите дату" }}
+                    render={({ field: { onChange, value } }) => {
+                      const isDisabled = bronePlacePOST.isLoading;
+
+                      const selectedDate = value ? new Date(value) : undefined
+
+                      const startOfToday = new Date()
+                      startOfToday.setHours(0, 0, 0, 0)
+
+                      const disabledDays = (date: Date) => {
+                        const d = new Date(date)
+                        d.setHours(0, 0, 0, 0)
+
+                        if (d < startOfToday) return true
+
+                        const day = d.getDay()
+
+                        if (d.getTime() === startOfToday.getTime()) {
+                          // Не работает в пн вт ср вс
+                          return day === 1 || day === 2 || day === 3 || day === 0
+                        }
+
+                        // Не работает в пн вт ср вс
+                        return day === 1 || day === 2 || day === 3 || day === 0
+                      }
+
+                      return (
+                        <div className="relative">
+                          <input
+                            readOnly
+                            disabled={isDisabled}
+                            value={
+                              selectedDate ? format(selectedDate, 'd MMMM', { locale: ru }) : ''
+                            }
+                            placeholder="Дата бронирования"
+                            onClick={() => setOpenCalendar(prev => !prev)}
+                            className={cn(
+                              cn(
+                                'lg:flex-1 lg:basis-0',
+                                'focus:opacity-80'
+                              ),
+                              "w-full transition-all px-[16px] py-[13px] rounded-[30px]",
+                              "bg-custom-black-400 text-custom-white-200",
+                              "placeholder:font-jost placeholder:text-[16px] placeholder:leading-none",
+                              "placeholder:text-custom-white-300",
+                              "focus:text-custom-white-102",
+                              "disabled:bg-custom-black-600 disabled:text-[#3b3b3b]",
+                              errors.date
+                                ? "outline-1 outline-custom-red-100"
+                                : "outline-none",
+                              cn(
+                                'md:h-[48px]'
+                              )
+                            )}
+                          />
+
+                          {openCalendar && (
+                            <div
+                              ref={calendarRef}
+                              className="absolute z-[1000] mt-2 bg-black p-4 rounded-xl shadow-xl"
+                            >
+                              <DayPicker
+                                mode="single"
+                                selected={selectedDate}
+                                onSelect={(date) => {
+                                  if (isDisabled) return;
+                                  if (!date) return
+                                  onChange(date.toISOString())
+                                  setOpenCalendar(false)
+                                }}
+                                disabled={disabledDays}
+                                locale={ru}
+                              />
+                            </div>
+                          )}
+
+                        </div>
+                      )
+                    }}
+                  />
+
+                </FadeContent>
+              </div>
+
+              <Controller
+                name="time"
+                control={control}
+                rules={{ required: 'Введите время' }}
+                render={({ field: { onChange, value } }) => {
+                  const isDisabled = bronePlacePOST.isLoading;
+
+                  const selectedDateStr = watch('date')
+                  const selectedDate = selectedDateStr
+                    ? dayjs(selectedDateStr)
+                    : null
+
+                  const timeValue = value
+                    ? dayjs(value, 'HH:mm')
+                    : null
+
+                  function handleChange(newValue: Dayjs | null) {
+                    onChange(newValue ? newValue.format('HH:mm') : null)
+                  }
+
+                  return (
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <TimePicker
+                        value={timeValue}
+                        onChange={handleChange}
+                        ampm={false}
+                        disabled={isDisabled}
+                        className={cn(
+                          'md:w-1/2 rounded-[30px]',
+                          errors.time
+                            ? "outline-1 outline-custom-red-100"
+                            : "outline-none",
+                        )}
+                        minTime={
+                          selectedDate && selectedDate.isSame(dayjs(), 'day')
+                            ? dayjs().add(30, 'minute')
+                            : dayjs('09:00', 'HH:mm')
+                        }
+                      />
+                    </LocalizationProvider>
+                  )
+                }}
+              />
+            </div>
+
+            <Controller
+              name="guests"
+              control={control}
+              rules={{
+                required: 'Укажите количество гостей',
+                min: { value: 1, message: 'Минимум 1 гость' },
+                max: { value: 12, message: 'Максимум 12 гостей' },
+              }}
+              render={({ field: { value, onChange } }) => {
+                const guests = value ?? 1
+
+                function increment() {
+                  if (guests < 12) onChange(guests + 1)
+                }
+
+                function decrement() {
+                  if (guests > 1) onChange(guests - 1)
+                }
+
+                return (
+                  <div
+                    className={cn(
+                      'flex items-center justify-between',
+                      'px-[16px] py-[13px] rounded-[30px]',
+                      'bg-custom-black-400 text-custom-white-200',
+                      'md:h-[48px]'
+                    )}
+                  >
+                    <span className="font-jost text-[16px] leading-4 tracking-[1px]">
+                      Гостей: {guests}
+                    </span>
+
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={decrement}
+                        disabled={guests <= 1}
+                        className="transition-all cursor-pointer disabled:cursor-auto w-8 h-8 rounded-full bg-custom-black-600 disabled:opacity-40"
+                      >
+                        <p className='-translate-y-[2px]'>−</p>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={increment}
+                        disabled={guests >= 12}
+                        className="transition-all cursor-pointer disabled:cursor-auto w-8 h-8 rounded-full bg-custom-black-600 disabled:opacity-40"
+                      >
+                        <p className='-translate-y-[2px]'>
+                          +
+                        </p>
+                      </button>
+                    </div>
+                  </div>
+                )
+              }}
+            />
+
+            <Controller
+              name="comment"
+              control={control}
+              rules={{
+                maxLength: {
+                  value: 500,
+                  message: 'Максимум 500 символов'
+                }
+              }}
+              render={({ field: { onChange, value, onBlur, ref } }) => {
+                const isDisabled = bronePlacePOST.isLoading
+
+                return (
+                  <textarea
+                    placeholder="Пожелания"
+                    disabled={isDisabled}
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    ref={ref}
+                    rows={3}
+                    className={cn(
+                      "w-full transition-all px-[16px] py-[20px] rounded-[30px]",
+                      "bg-custom-black-400 text-custom-white-200",
+                      "placeholder:font-jost placeholder:text-[16px]",
+                      "placeholder:text-custom-white-300",
+                      "focus:text-custom-white-102 resize-none",
+                      "disabled:bg-custom-black-600 disabled:text-[#3b3b3b]",
+                      errors.comment
+                        ? "outline-1 outline-custom-red-100"
+                        : "outline-none"
+                    )}
+                  />
+                )
+              }}
+            />
           </div>
 
           <div

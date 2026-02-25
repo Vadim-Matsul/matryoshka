@@ -7,6 +7,7 @@ import { EventSpace } from './EventSpace'
 import { PlacesMap } from './PlacesMap'
 import { Footer } from '@/components/footer';
 import { FoodGallery } from './FoodGallery';
+import { InteriorSlider } from './InteriorSlider';
 
 
 type Props = {}
@@ -18,6 +19,7 @@ export default function HomePage({ }: Props) {
       <Header />
       <section className='mt-[27px] md:mt-[64px] font-jost'>
         <Intro />
+        <InteriorSlider />
         <FoodGallery />
         <Places />
         <SpecialForGuests />

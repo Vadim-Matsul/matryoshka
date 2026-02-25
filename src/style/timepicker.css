@@ -1,0 +1,34 @@
+.MuiPickersInputBase-root {
+  background: var(--color-custom-black-400);
+  height: 48px !important;
+  color: white !important;
+  font-family: var(--font-jost) !important;
+  font-weight: 400 !important;
+  border-radius: 30px !important;
+  font-size: 16px !important;
+  line-height: 16px !important;
+  padding: 0px !important;
+
+  outline: none !important;
+  outline-width: 0 !important;
+}
+
+.MuiPickersInputBase-root > div {
+  padding: 16px 13px 16px 13px !important;
+  outline: none !important;
+  outline-width: 0 !important;
+}
+
+.MuiPickersInputBase-root > div:nth-child(2) {
+  & > button {
+    padding-right: 16px !important;
+
+    & > svg {
+      fill: var(--color-custom-white-400);
+    }
+  }
+}
+
+.MuiPickersOutlinedInput-notchedOutline {
+  border-width: 0px !important;
+}

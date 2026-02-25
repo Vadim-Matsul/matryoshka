@@ -20,9 +20,9 @@ export const matryoshka = {
     },
     sun: { open: false },
   },
-  instagram: {
-    href: 'https://www.instagram.com/matreshka_karaoke/',
-  },
+  // instagram: {
+  //   href: 'https://www.instagram.com/matreshka_karaoke/',
+  // },
   telegram: {
     href: 'https://t.me/matreshkared',
   },

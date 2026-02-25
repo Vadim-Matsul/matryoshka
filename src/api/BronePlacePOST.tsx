@@ -11,9 +11,12 @@ export type BookPlaceRequestModel = {
   name: string;
   phone: string;
   agree: boolean;
+  date: string;
+  time: string;
+  guests: number;
+  comment?: string;
   place: 'матрёшка'
 }
-
 
 export function BronePlacePOST() {
   const [isError, setIsError] = useState(false);
