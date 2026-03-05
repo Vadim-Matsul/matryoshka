@@ -10,6 +10,7 @@ import Script from 'next/script';
 import { CookieConsent } from '@/analyst/CookieConsent';
 import { GoogleAnal } from '@/analyst/GoogleAnal';
 import { YandexAnal } from '@/analyst/YandexAnal';
+import { RoistatAnal } from '@/analyst/RoistatAnal';
 
 const jostFont = Jost({
   variable: '--font-jost',
@@ -47,6 +48,7 @@ export default function RootLayout({
           'antialiased bg-custom-black-100 text-custom-white-100'
         )}
       >
+        <RoistatAnal />
         <Providers>
           {children}
         </Providers>
