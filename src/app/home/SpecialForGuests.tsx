@@ -22,6 +22,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { getRoistatVisit } from '@/utils/getRoistatVisit';
 
 
 dayjs.extend(customParseFormat)
@@ -116,6 +117,7 @@ type FormValues = {
   time: string;
   guests: number;
   comment?: string;
+  roistat_visit: string;
 };
 type SpecialGuestsFormProps = {}
 function SpecialGuestsForm(props: SpecialGuestsFormProps) {
@@ -133,6 +135,7 @@ function SpecialGuestsForm(props: SpecialGuestsFormProps) {
       guests: 1,
       comment: '',
       agree: false,
+      roistat_visit: getRoistatVisit(),
     },
   });
 

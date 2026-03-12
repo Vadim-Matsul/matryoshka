@@ -16,6 +16,7 @@ export type BookPlaceRequestModel = {
   guests: number;
   comment?: string;
   place: 'матрёшка'
+  roistat_visit: string,
 }
 
 export function BronePlacePOST() {
@@ -40,8 +41,8 @@ export function BronePlacePOST() {
       const data = await res.json();
       console.log(data);
 
-      if (!res.ok || data.status === "error") {
-        throw new Error(JSON.stringify(res));
+      if (!res.ok || data.status === 'error') {
+        throw new Error(JSON.stringify(data)); // было res — нужно data
       }
 
       console.log('Успешный запрос: ', data)

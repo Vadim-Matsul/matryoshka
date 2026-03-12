@@ -1,15 +1,5 @@
 import { BookPlaceRequestModel } from '@/api/BronePlacePOST';
-import { NextResponse } from 'next/server';
-
-const getCurDate = () => {
-  const now = new Date();
-
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-};
+import { after, NextResponse } from 'next/server';
 
 const remarkedErrors: Record<string, { field: string; message: string }> = {
   '`reserve`.`date`': {
@@ -22,89 +12,105 @@ const remarkedErrors: Record<string, { field: string; message: string }> = {
   },
 };
 
-const getNextTimeSlotMSK = (stepMinutes = 30): string => {
-  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-
-  const minutes = now.getMinutes();
-  const remainder = minutes % stepMinutes;
-
-  if (remainder !== 0) {
-    now.setMinutes(minutes + (stepMinutes - remainder));
-  } else {
-    now.setMinutes(minutes + stepMinutes);
-  }
-
-  now.setSeconds(0);
-  now.setMilliseconds(0);
-
-  const hh = String(now.getHours()).padStart(2, '0');
-  const mm = String(now.getMinutes()).padStart(2, '0');
-
-  return `${hh}:${mm}`;
-};
-
 const config = {
   api_url: 'https://app.remarked.ru/api/v1/ApiReservesWidget',
-  token: '8ceab82028b4c1e7edb37efebb35a2dd',
+  token: process.env.REMARKED_TOKEN,
   domain: 'https://matreshka-karaoke.ru',
-  envs: {},
+};
+
+const sendRoistatWebhook = async (
+  data: BookPlaceRequestModel,
+): Promise<void> => {
+  const apiKey = process.env.ROISTAT_API_KEY;
+
+  if (!apiKey) {
+    console.warn('ROISTAT_API_KEY is not set, skipping webhook');
+    return;
+  }
+
+  const payload = {
+    title: 'Заявка',
+    name: data.name,
+    phone: data.phone,
+    comment: data.comment || 'Заявка отправлена через форму бронирования',
+    roistat_visit: data.roistat_visit || undefined,
+    fields: {
+      site: config.domain,
+      place: data.place,
+      date: data.date,
+      time: data.time,
+      guests_count: data.guests,
+    },
+  };
+
+  const res = await fetch(
+    `https://cloud.roistat.com/integration/webhook?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    },
+  );
+
+  console.log('Roistat webhook sent, status:', res.status);
 };
 
 export async function POST(req: Request) {
   try {
-    const { name, phone, place, date, time, guests, comment }: BookPlaceRequestModel = await req.json();
+    if (!config.token) {
+      console.error('REMARKED_TOKEN is not set');
+      return NextResponse.json(
+        { error: 'Сервис бронирования временно недоступен' },
+        { status: 500 },
+      );
+    }
 
-    const request_id = Date.now();
-
-    const body = {
-      method: 'CreateReserve',
-      token: config.token,
-      reserve: {
-        name,
-        phone,
-        date,
-        time,
-        guests_count: guests,
-        comment,
-      },
-      request_id,
-    };
+    const body: BookPlaceRequestModel = await req.json();
+    const { name, phone, date, time, guests, comment } = body;
 
     const response = await fetch(config.api_url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        method: 'CreateReserve',
+        token: config.token,
+        reserve: {
+          name,
+          phone,
+          date,
+          time,
+          guests_count: guests,
+          comment,
+        },
+        request_id: Date.now(),
+      }),
     });
 
     const data = await response.json();
 
     if (data.status === 'error') {
-      const matchedKey = Object.keys(remarkedErrors).find(key => data.message?.includes(key));
-
+      const matchedKey = Object.keys(remarkedErrors).find((key) =>
+        data.message?.includes(key),
+      );
       const known = matchedKey ? remarkedErrors[matchedKey] : null;
-
-      if (known) {
-        return NextResponse.json(
-          {
-            field: known.field,
-            message: known.message,
-          },
-          { status: 400 },
-        );
-      }
 
       return NextResponse.json(
         {
-          field: null,
-          message: data.message || 'Неизвестная ошибка',
+          field: known?.field ?? null,
+          message: known?.message ?? data.message ?? 'Неизвестная ошибка',
         },
         { status: 400 },
       );
     }
 
+    after(() => sendRoistatWebhook(body));
+
     return NextResponse.json(data);
   } catch (error) {
     console.error('Reserve API error:', error);
-    return NextResponse.json({ error: 'Something went wrong' + error }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Something went wrong' + error },
+      { status: 500 },
+    );
   }
 }
