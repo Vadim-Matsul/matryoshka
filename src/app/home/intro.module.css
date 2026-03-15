@@ -1,0 +1,57 @@
+.wrapper_mediaqueries {
+  height: 700px;
+}
+
+@media (min-width: 640px) {
+  .wrapper_mediaqueries {
+    height: 900px;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper_mediaqueries {
+    height: 440px;
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper_mediaqueries {
+    height: 460px;
+  }
+}
+
+@media (min-width: 900px) {
+  .wrapper_mediaqueries {
+    height: 515px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .wrapper_mediaqueries {
+    height: 600px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .wrapper_mediaqueries {
+    height: 660px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrapper_mediaqueries {
+    height: 740px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .wrapper_mediaqueries {
+    height: 800px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper_mediaqueries {
+    height: 820px;
+  }
+}

@@ -9,7 +9,7 @@ import { matryoshka } from '@/configs/matryoshka'
 import { cn } from '@/utils/cn'
 import { useEffect, useRef, useState } from 'react'
 import { getMoscowDay } from './PlacesMap'
-
+import introstyles from './intro.module.css'
 
 type Props = {}
 
@@ -20,13 +20,13 @@ export function Intro({ }: Props) {
       <section
         className={cn(
           'relative',
-          'h-[700px] sm:h-[850px]',
           'w-full rounded-b-2xl overflow-hidden',
+          introstyles.wrapper_mediaqueries
         )}
       >
         <div
           className={cn(
-            '1_5xl:w-[1440px] 1_5xl:mx-auto',
+            '1_5xl:w-[1440px] 1_5xl:mx-auto bg-transparent',
             'w-full h-full relative z-[2]',
             'flex justify-end flex-col',
           )}
@@ -78,63 +78,28 @@ export function Intro({ }: Props) {
 
         <div
           className={cn(
-            'absolute inset-0 z-[1] overflow-hidden',
-            '1_5xl:w-[1440px] 1_5xl:mx-auto rounded-b-2xl overflow-hidden'
+            'absolute inset-0 z-[1] overflow-hidden ',
+            '1_5xl:w-[1440px] 1_5xl:mx-auto rounded-b-2xl overflow-hidden',
+            ''
           )}
         >
-          <video
-            autoPlay
-            loop
-            controls={false}
-            muted
-            playsInline
-            preload="none"
-            disablePictureInPicture
-            controlsList="nodownload noplaybackrate nofullscreen"
-            className="w-full bg-video h-full object-cover relative z-[2]"
-          >
-            <source src="/videos/intro_desktop.mp4" media="(min-width: 1024px)" />
-            <source src="/videos/intro_mobile.mp4" />
-          </video>
+          <div className='w-full aspect-[1920/3414] md:aspect-[1920/1080]'>
+            <video
+              autoPlay
+              loop
+              controls={false}
+              muted
+              playsInline
+              preload="none"
+              disablePictureInPicture
+              controlsList="nodownload noplaybackrate nofullscreen"
+              className="w-full h-full bg-video object-cover"
+            >
+              <source src="/videos/intro_desktop.mp4" media="(min-width: 768px)" />
+              <source src="/videos/intro_mobile.mp4" />
+            </video>
+          </div>
 
-          {/* <video
-            src='/videos/intro.mp4'
-            autoPlay
-            loop
-            muted
-            controls={false}
-            className='w-full h-full object-cover'
-          /> */}
-
-          {/* <div
-            className={cn(
-              'absolute left-0 top-0 bottom-0 z-[2]',
-              'w-[20%]',
-              'bg-gradient-to-l from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
-            )}
-          />
-          <div
-            className={cn(
-              'absolute right-0 top-0 bottom-0 z-[2]',
-              'w-[20%]',
-              'bg-gradient-to-r from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
-            )}
-          />
-          <div
-            className={cn(
-              'absolute left-0 right-0 bottom-0 z-[2]',
-              'h-[85%] sm:h-[50%] lg:h-[45%] 1_5xl:h-[60%]',
-              'bg-gradient-to-b from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
-            )}
-          />
-          <div
-            className={cn(
-              'hidden lg:block',
-              'absolute left-0 right-0 top-0 z-[2]',
-              'h-[30%]',
-              'bg-gradient-to-t from-transparent via-custom-black-100/40 via-45% to-custom-black-100'
-            )}
-          /> */}
         </div>
       </section>
 
