@@ -29,8 +29,8 @@ dayjs.extend(customParseFormat)
 
 const SCHEDULE = {
   4: { start: '20:00', end: '03:00' }, // чт
-  5: { start: '20:00', end: '05:00' }, // пт
-  6: { start: '20:00', end: '05:00' }, // сб
+  5: { start: '20:00', end: '06:00' }, // пт
+  6: { start: '20:00', end: '06:00' }, // сб
 } as const
 
 type Props = {}

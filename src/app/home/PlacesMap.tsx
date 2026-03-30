@@ -110,7 +110,7 @@ export function PlacesMap({ }: Props) {
 
             {getMoscowDay() !== 'other' && (
               <p className="text-custom-white-101 whitespace-nowrap w-min mx-auto">
-                Сегодня до {getMoscowDay() === 'thursday' ? '03:00' : '05:00'}
+                Сегодня до {getMoscowDay() === 'thursday' ? '03:00' : '06:00'}
               </p>
             )}
           </div>

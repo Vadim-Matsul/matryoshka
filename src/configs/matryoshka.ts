@@ -11,12 +11,12 @@ export const matryoshka = {
     fri: {
       open: true,
       from: '20:00',
-      to: '05:00',
+      to: '06:00',
     },
     sat: {
       open: true,
       from: '20:00',
-      to: '05:00',
+      to: '06:00',
     },
     sun: { open: false },
   },

@@ -130,7 +130,7 @@ export function Footer({ }: Props) {
               )}
             >
               <span className='inline-block w-3.5'>пт</span>
-              <span>20:00-05:00</span>
+              <span>20:00-06:00</span>
             </p>
             <p
               className={cn(
@@ -139,7 +139,7 @@ export function Footer({ }: Props) {
               )}
             >
               <span className='inline-block w-3.5'>сб</span>
-              <span>20:00-05:00</span>
+              <span>20:00-06:00</span>
             </p>
             <p className='flex items-center gap-3'>
               <span className='inline-block w-3.5'>вс</span>
@@ -257,7 +257,7 @@ export function Footer({ }: Props) {
                 )}
               >
                 <span className='inline-block w-3.5'>пт</span>
-                <span>20:00-05:00</span>
+                <span>20:00-06:00</span>
               </p>
               <p
                 className={cn(
@@ -266,7 +266,7 @@ export function Footer({ }: Props) {
                 )}
               >
                 <span className='inline-block w-3.5'>сб</span>
-                <span>20:00-05:00</span>
+                <span>20:00-06:00</span>
               </p>
               <p className='flex items-center gap-3'>
                 <span className='inline-block w-3.5'>вс</span>
