@@ -95,8 +95,8 @@ export function Intro({ }: Props) {
               controlsList="nodownload noplaybackrate nofullscreen"
               className="w-full h-full bg-video object-cover"
             >
-              <source src="/videos/intro_desktop.mp4" media="(min-width: 768px)" />
-              <source src="/videos/intro_mobile.mp4" />
+              <source src="/videos/intro_desktop.mp4?v=2" media="(min-width: 768px)" />
+              <source src="/videos/intro_mobile.mp4?v=2" />
             </video>
           </div>
 
