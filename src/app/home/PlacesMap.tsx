@@ -9,7 +9,7 @@ import { RestaurantPlaceKeys } from '@/configs/places';
 import { cn } from '@/utils/cn';
 import { useEffect, useRef, useState } from 'react';
 
-type MoscowDay = 'thursday' | 'friday' | 'saturday' | 'other';
+type MoscowDay = 'friday' | 'saturday' | 'other';
 
 export function getMoscowDay(): MoscowDay {
   const now = new Date();
@@ -20,13 +20,10 @@ export function getMoscowDay(): MoscowDay {
   const day = moscowTime.getDay();
   const hour = moscowTime.getHours();
 
-  const isThursday = day === 4 || (day === 5 && hour < 3);
-  if (isThursday) return 'thursday';
-
-  const isFriday = (day === 5 && hour >= 3) || (day === 6 && hour < 5);
+  const isFriday = day === 5 || (day === 6 && hour < 6);
   if (isFriday) return 'friday';
 
-  const isSaturday = (day === 6 && hour >= 5) || (day === 0 && hour < 5);
+  const isSaturday = (day === 6 && hour >= 6) || (day === 0 && hour < 6);
   if (isSaturday) return 'saturday';
 
   return 'other';
@@ -87,7 +84,7 @@ export function PlacesMap({ }: Props) {
               РАДЫ ГОСТЮ
             </h2>
             <p className="font-jost uppercase text-center text-custom-white-101 text-[10px] leading-[10px] tracking-[1.25px] md:text-[16px] md:leading-[16px] md:tracking-[4.8px]">
-              с четверга по субботу
+              в пятницу и субботу
             </p>
           </FadeContent>
 
@@ -110,7 +107,7 @@ export function PlacesMap({ }: Props) {
 
             {getMoscowDay() !== 'other' && (
               <p className="text-custom-white-101 whitespace-nowrap w-min mx-auto">
-                Сегодня до {getMoscowDay() === 'thursday' ? '03:00' : '06:00'}
+                Сегодня до 06:00
               </p>
             )}
           </div>

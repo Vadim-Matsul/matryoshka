@@ -114,14 +114,9 @@ export function Footer({ }: Props) {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <p
-              className={cn(
-                'flex items-center gap-3',
-                moscowDay === 'thursday' ? 'font-bold uppercase' : ''
-              )}
-            >
+            <p className='flex items-center gap-3'>
               <span className='inline-block w-3.5'>чт</span>
-              <span>20:00-03:00</span>
+              <span>Закрыто</span>
             </p>
             <p
               className={cn(
@@ -241,14 +236,9 @@ export function Footer({ }: Props) {
                 <span className='inline-block w-3.5'>ср</span>
                 <span>Закрыто</span>
               </p>
-              <p
-                className={cn(
-                  'flex items-center gap-3',
-                  moscowDay === 'thursday' ? 'font-bold uppercase' : ''
-                )}
-              >
+              <p className='flex items-center gap-3'>
                 <span className='inline-block w-3.5'>чт</span>
-                <span>20:00-03:00</span>
+                <span>Закрыто</span>
               </p>
               <p
                 className={cn(

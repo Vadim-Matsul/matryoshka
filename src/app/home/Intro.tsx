@@ -62,7 +62,7 @@ export function Intro({ }: Props) {
               <p
                 className='text-custom-white-101 whitespace-nowrap w-min mx-auto'
               >
-                Сегодня до {getMoscowDay() === 'thursday' ? '03:00' : '06:00'}
+                Сегодня до 06:00
               </p>
             )}
           </div>

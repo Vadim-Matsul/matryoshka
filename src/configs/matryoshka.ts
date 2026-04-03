@@ -3,11 +3,7 @@ export const matryoshka = {
     mon: { open: false },
     tue: { open: false },
     wed: { open: false },
-    thu: {
-      open: true,
-      from: '20:00',
-      to: '03:00',
-    },
+    thu: { open: false },
     fri: {
       open: true,
       from: '20:00',
