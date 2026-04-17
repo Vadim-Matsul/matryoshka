@@ -17,6 +17,7 @@ export function Intro({ }: Props) {
 
   return (
     <>
+      <h1 className="sr-only">Матрёшка — авторский ресторан-бар в Москве на Болотной набережной</h1>
       <section
         className={cn(
           'relative',
