@@ -139,7 +139,7 @@ export function Places({ }: Props) {
 
           <AnimatedImage
             src='/images/dark_matryoshka.webp'
-            alt=''
+            alt='Фирменная матрёшка — символ караоке-бара Матрёшка в Москве'
             options={{
               blur: 20,
               scale: 1.3,

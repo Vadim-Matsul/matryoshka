@@ -9,19 +9,19 @@ const conf = {
   images: {
     mobileMaxPX: 440,
     mobile: [
-      '/images/place_mobile_1.webp',
-      '/images/place_mobile_4.webp',
-      '/images/place_mobile_3.webp',
-      '/images/place_mobile_2.webp',
-      '/images/place_mobile_5.webp',
+      { src: '/images/place_mobile_1.webp', alt: 'Главный зал караоке-бара Матрёшка в Москве' },
+      { src: '/images/place_mobile_4.webp', alt: 'VIP-зал с банкетным столом в Матрёшке' },
+      { src: '/images/place_mobile_3.webp', alt: 'Сцена для живых выступлений и караоке в Матрёшке' },
+      { src: '/images/place_mobile_2.webp', alt: 'Барная стойка с авторским декором в Матрёшке' },
+      { src: '/images/place_mobile_5.webp', alt: 'Большой зал Матрёшки — панорама с экранами для караоке' },
     ],
     desktop: [
-      '/images/place_desktop_1.webp',
-      '/images/place_desktop_2.webp',
-      '/images/place_desktop_3.webp',
-      '/images/place_desktop_4.webp',
-      '/images/place_desktop_5.webp',
-      '/images/place_desktop_6.webp',
+      { src: '/images/place_desktop_1.webp', alt: 'Главный зал караоке-бара Матрёшка в Москве' },
+      { src: '/images/place_desktop_2.webp', alt: 'Барная стойка с авторским декором в Матрёшке' },
+      { src: '/images/place_desktop_3.webp', alt: 'Сцена для живых выступлений и караоке в Матрёшке' },
+      { src: '/images/place_desktop_4.webp', alt: 'VIP-зал с банкетным столом в Матрёшке' },
+      { src: '/images/place_desktop_5.webp', alt: 'Большой зал Матрёшки — панорама с экранами для караоке' },
+      { src: '/images/place_desktop_6.webp', alt: 'Приватный зал для мероприятий в Матрёшке' },
     ]
   }
 }
@@ -40,7 +40,7 @@ export function InteriorSlider() {
 
     function onResize() {
       const isDesktop = window.innerWidth >= conf.images.mobileMaxPX;
-      setImages(isDesktop ? conf.images.desktop : conf.images.mobile)
+      setImages(isDesktop ? conf.images.desktop : conf.images.mobile as typeof conf.images.desktop)
     }
 
     window.addEventListener('resize', onResize);
@@ -99,8 +99,8 @@ export function InteriorSlider() {
                   className='w-full h-full absolute inset-0 z-[2]'
                 >
                   <AnimatedImage
-                    src={img}
-                    alt={idx + 'image'}
+                    src={img.src}
+                    alt={img.alt}
                     options={{
                       blur: 20,
                       scale: 1,

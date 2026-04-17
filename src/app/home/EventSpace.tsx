@@ -104,7 +104,7 @@ export function EventSpace({ }: Props) {
           loading='lazy'
           decoding='async'
           src='/images/girl_desktop.webp'
-          alt='Девушка поёт в микрофон'
+          alt='Исполнительница с микрофоном в стиле Матрёшки — вечер живого вокала'
           className='hidden lg:block w-full h-full object-cover select-none'
         />
 
@@ -112,7 +112,7 @@ export function EventSpace({ }: Props) {
           loading='lazy'
           decoding='async'
           src='/images/girl_mobile.webp'
-          alt='Девушка поёт в микрофон'
+          alt='Исполнительница с микрофоном в стиле Матрёшки — вечер живого вокала'
           className='lg:hidden w-full h-full object-cover select-none'
         />
 
