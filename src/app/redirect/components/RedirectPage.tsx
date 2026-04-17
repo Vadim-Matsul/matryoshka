@@ -1,7 +1,6 @@
 'use client';
 
 import { pageLinkKeys, pageLinks } from '@/configs/links';
-import { gaEvent } from '@/utils/gaEvent';
 import { sendYMEvent } from '@/utils/sendYMEvent';
 import { waitForGlobal } from '@/utils/waitForGlobal';
 import { usePathname, useRouter } from 'next/navigation';
@@ -80,24 +79,19 @@ export function RedirectPage() {
         return;
       }
 
-      const gtag = await waitForGlobal("gtag");
-      console.log({ gtag })
       const ym = await waitForGlobal("ym");
       console.log({ ym })
 
       const payload = getEventPayload();
 
-      const isSucessGA = gaEvent(EVENT_NAME, payload);
       const isSucessYA1 = sendYMEvent(
         NEXT_PUBLIC_YM_COUNTER_ID,
         EVENT_NAME,
         payload
       )
 
-      const isSuccess = isSucessGA && isSucessYA1;
-      console.log({ isSucessGA, isSucessYA1 });
-      if (isSuccess) {
-        console.log('Все event отправлены в YA & GA');
+      if (isSucessYA1) {
+        console.log('Все event отправлены в YA');
         localStorage.setItem(STORAGE_KEY, 'true')
       }
 

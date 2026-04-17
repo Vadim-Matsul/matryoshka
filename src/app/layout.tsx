@@ -8,7 +8,6 @@ import { cn } from '@/utils/cn';
 import { Providers } from './providers';
 import Script from 'next/script';
 import { CookieConsent } from '@/analyst/CookieConsent';
-import { GoogleAnal } from '@/analyst/GoogleAnal';
 import { YandexAnal } from '@/analyst/YandexAnal';
 import { RoistatAnal } from '@/analyst/RoistatAnal';
 
@@ -54,7 +53,6 @@ export default function RootLayout({
         </Providers>
 
         <CookieConsent />
-        <GoogleAnal />
       </body>
     </html>
   );
