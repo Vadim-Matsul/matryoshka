@@ -84,7 +84,7 @@ export function Intro({ }: Props) {
             ''
           )}
         >
-          <div className='w-full aspect-[1920/3414] md:aspect-[1920/1080]'>
+          <div className='w-full aspect-[9/16] md:aspect-[1920/1080]'>
             <video
               autoPlay
               loop
@@ -96,8 +96,8 @@ export function Intro({ }: Props) {
               controlsList="nodownload noplaybackrate nofullscreen"
               className="w-full h-full bg-video object-cover"
             >
-              <source src="/videos/intro_desktop.mp4?v=2" media="(min-width: 768px)" />
-              <source src="/videos/intro_mobile.mp4?v=2" />
+              <source src="/videos/intro_desktop.mp4?v=2" type="video/mp4" media="(min-width: 768px)" />
+              <source src="/videos/intro_mobile.mp4?v=2" type="video/mp4" />
             </video>
           </div>
 
