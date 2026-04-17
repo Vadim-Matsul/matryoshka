@@ -7,13 +7,36 @@ import { YandexMapIcon } from '@/components/icons/YandexMapIcon'
 import { PlacesModalNextSteps } from '@/components/modals/places_modal/config'
 import { matryoshka } from '@/configs/matryoshka'
 import { cn } from '@/utils/cn'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { getMoscowDay } from './PlacesMap'
 import introstyles from './intro.module.css'
 
 type Props = {}
 
 export function Intro({ }: Props) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const updateSource = () => {
+      const isMobile = window.innerWidth < 768;
+      const newSrc = isMobile
+        ? '/videos/intro_mobile.mp4?v=2'
+        : '/videos/intro_desktop.mp4?v=2';
+
+      const source = video.querySelector('source');
+      if (source && source.getAttribute('src') !== newSrc) {
+        source.setAttribute('src', newSrc);
+        video.load();
+      }
+    };
+
+    updateSource();
+    window.addEventListener('resize', updateSource);
+    return () => window.removeEventListener('resize', updateSource);
+  }, []);
 
   return (
     <>
@@ -86,6 +109,7 @@ export function Intro({ }: Props) {
         >
           <div className='w-full aspect-[9/16] md:aspect-[1920/1080]'>
             <video
+              ref={videoRef}
               autoPlay
               loop
               controls={false}
@@ -96,8 +120,7 @@ export function Intro({ }: Props) {
               controlsList="nodownload noplaybackrate nofullscreen"
               className="w-full h-full bg-video object-cover"
             >
-              <source src="/videos/intro_desktop.mp4?v=2" type="video/mp4" media="(min-width: 768px)" />
-              <source src="/videos/intro_mobile.mp4?v=2" type="video/mp4" />
+              <source src="/videos/intro_desktop.mp4?v=2" type="video/mp4" />
             </video>
           </div>
 
